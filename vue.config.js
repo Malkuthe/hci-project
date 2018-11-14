@@ -1,5 +1,12 @@
 var debug = process.env.NODE_ENV === 'production';
 
 module.exports = {
-    baseUrl: './' 
+    baseUrl: './',
+    css: {
+        loaderOptions: {
+            sass: {
+                data: `@import "@/variables.scss";`
+            }
+        }
+    } 
 }
