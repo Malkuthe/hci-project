@@ -9,6 +9,7 @@
             <ul>
                 <li><router-link to='/'>Home</router-link></li>
                 <li><router-link to='/about'>About</router-link></li>
+                <li v-if="loggedIn"><a v-on:click="doLogout" href="javascript:void(0)">Log Out</a></li>
             </ul>
         </div>
 
@@ -16,8 +17,24 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
+
 export default {
-    name: 'navbar'
+    name: 'navbar',
+    methods: {
+        ...mapMutations([
+            'logout'
+        ]),
+        doLogout() {
+            this.logout();
+            this.$router.push('/');
+        }
+    },
+    computed: {
+        ...mapState([
+            'loggedIn'
+        ])
+    }
 }
 </script>
 
