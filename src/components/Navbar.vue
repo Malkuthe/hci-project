@@ -9,7 +9,7 @@
             <ul>
                 <li><router-link to='/'>Home</router-link></li>
                 <li><router-link to='/about'>About</router-link></li>
-                <li v-if="loggedIn"><a v-on:click="doLogout" href="javascript:void(0)">Log Out</a></li>
+                <li v-if="loggedIn"><a to='/logout' v-on:click="doLogout" href="javascript:void(0)">Log Out</a></li>
             </ul>
         </div>
 
@@ -18,6 +18,7 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex'
+import router from '@/router'
 
 export default {
     name: 'navbar',
@@ -27,7 +28,7 @@ export default {
         ]),
         doLogout() {
             this.logout();
-            this.$router.push('/');
+            router.push('/logout');
         }
     },
     computed: {

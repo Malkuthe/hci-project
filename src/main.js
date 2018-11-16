@@ -8,6 +8,9 @@ Vue.config.productionTip = false
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresLogin) && !store.state.loggedIn) {
     next({path: 'login', query: { redirect: from.query.redirect || from.path }});
+  } else if (to.path.toLowerCase() == '/logout') {
+    next();
+    setTimeout(function() {router.push('/')},5000);
   } else {
     next();
   }
