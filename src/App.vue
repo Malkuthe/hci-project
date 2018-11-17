@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <navbar />
-    <router-view :key='$router.testV'/>
+    <div id="content">
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -26,14 +28,36 @@ export default {
 <style lang="scss">
 body {
   margin: 0px;
+  min-height: 100vh;
+  background: $pale-grey;
 }
+
 #app {
+  height: 100vh;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  width: 100%;
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns: 1fr 70% 1fr;
+  grid-template-rows: 85px auto;
+
+  #content {
+    width: 100%;
+    max-width: 70vw;
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+  }
+
+  #nav {
+    grid-column: 1 / 4;
+    grid-row: 1 / 2;
+  }
 }
+
 #nav {
   padding: 30px;
   a {
