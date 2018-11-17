@@ -1,66 +1,116 @@
 <template>
-  <div class="hello">
-    <h1>{{ testdata.content.line2 }}</h1>
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
+  <div class="home">
+    <h1 id = title> {{title}} </h1>
+    <hr noshade align = "left" width = 100%>
+    <br>
+    <p id = title style ="font-size: 20px;">{{pinfo}}</p>
+    <hr align = "left" width = 100%>
     <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
+      <li id = left><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target = "_blank" rel = "noopener">Change password</a></li>
+      <li id = right><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">Email</a></li>
     </ul>
-    <h3>Essential Links</h3>
+    <br>
     <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
+      <li id = left><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target = "_blank" rel = "noopener">Adresses</a></li>
     </ul>
-    <h3>Ecosystem</h3>
+    <br>
     <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
+      <li id = left><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target = "_blank" rel = "noopener">Phone Number</a></li>
     </ul>
+    <br><br>
+    <p id = title style ="font-size: 20px;">{{academic}}</p>
+    <hr align = "left" width = 100%>
+    <ul>
+      <li id = left><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target = "_blank" rel = "noopener">Look up Classes</a></li>
+      <li id = right><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">Registration Time and Status</a></li>
+    </ul>
+    <br>
+    <ul>
+      <li id = left><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target = "_blank" rel = "noopener">Drop courses</a></li>
+      <li id = right><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">My courses</a></li>
+    </ul>
+    <br>
+    <ul>
+      <li id = left><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target = "_blank" rel = "noopener">My Weekly Schedule</a></li>
+      <li id = right><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">My Grades</a></li>
+    </ul>
+    <br>
+    <ul>
+      <li id = left><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target = "_blank" rel = "noopener">Registration History</a></li>
+      <li id = right><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">Exams</a></li>
+    </ul>
+    <br><br>
+    <p id = title style ="font-size: 20px;">{{finance}}</p>
+    <hr align = "left" width = 100%>
+    <table id="t01">
+  <tr>
+    <th>Term</th>
+    <th>Total amount due</th> 
+    <th>Due Date</th>
+  </tr>
+  <tr>
+    <td>null</td>
+    <td>null</td>
+    <td>null</td>
+  </tr>
+</table>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  },
-  computed: {
-    ...mapState([
-      'testdata'
-    ])
+  name: 'home',
+  data(){
+    return{
+      title: "Home Page",
+      pinfo: "Personal Information",
+      academic: "Academic",
+      finance: "Finance"
+    } 
   }
 }
 </script>
+<style scoped>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-h3 {
-  margin: 40px 0 0;
+#title{
+	float: left;
+	margin-left: 10px;
+	margin-right: 300px;
 }
+#left{
+	float: left;
+	margin-left : 10px;
+}
+#right{
+	float: left;
+	margin-left : 200px;
+}
+
 ul {
   list-style-type: none;
-  padding: 0;
+  font-size: 20px;
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
+table {
+    margin-top: 20px;
+    margin-left: 45px;
+    width:40%;
 }
-a {
-  color: #42b983;
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+table#t01 tr:nth-child(even) {
+    background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+   background-color: #fff;
+}
+table#t01 th {
+    background-color: grey;
+    color: white;
 }
 </style>
