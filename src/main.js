@@ -2,11 +2,17 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faUserCircle)
+
+Vue.component('fa-icon', FontAwesomeIcon);
 
 Vue.config.productionTip = false
 
 router.beforeEach((to, from, next) => {
-  console.log(store.state.line)
   if (to.matched.some(record => record.meta.requiresLogin) && !store.state.loggedIn) {
     next({path: 'login', query: { 
       redirect: from.query.redirect || 

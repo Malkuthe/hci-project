@@ -1,5 +1,5 @@
 <template>
-    <div id="login">
+    <div id="login" class="card">
 
         <div id="form">
             
@@ -9,7 +9,6 @@
                     v-model='username' 
                     class='username' 
                     placeholder='Username' />
-
                 <label for='password' class='password'>Password</label>
                 <input 
                     v-model='password' 
@@ -25,6 +24,16 @@
                     <div v-if='errorLogin' class="alert error">Login failed. Incorrect username or password</div>
                 </transition>
             </div>
+        </div>
+
+        <div id="info">
+            <h2>Information</h2>
+            <p>This is the high-fidelity prototype for the course registration system created for COMP3020 (Human-Computer Interaction) by Group 11.</p>
+            <p><b>Members:</b> Shijun Qu, Jiehao Luo, Harris Cheng, John Paulo Baltao</p>
+            <p>If you wish to test the system, please log in with the following credentials:</p>
+            <p><b>Username:</b> {{ mockUser.username }}<br />
+               <b>Password:</b> {{ mockUser.password }}<br /></p>
+            <p>Please note that changes made on the user account will be deleted if you navigate away from the prototype or refresh the page.</p>
         </div>
 
     </div>
@@ -85,19 +94,18 @@ export default {
         margin-top: 80px;
         width: 80%;
         min-height: 300px;
-        padding: 20px 10px;
-        background: $light-blue-grey;
-        box-shadow: 
-            0 2px 2px 0 rgba(0,0,0,0.14), 
-            0 3px 1px -2px rgba(0,0,0,0.12), 
-            0 1px 5px 0 rgba(0,0,0,0.2);
         display: grid;
-        border-radius: 3px;
         grid-template-columns: 4fr 6fr;
         grid-template-areas: 'form info';
 
         #form {
             grid-area: form;
+            padding-right: 20px;
+            border-right: 1px solid rgba($dark-grey,0.85);
+            border-left: 0;
+            border-image: linear-gradient(rgba(0,0,0,0),rgba($dark-grey,0.85) 30%, rgba($dark-grey,0.85) 70%, rgba(0,0,0,0));
+            border-style: solid;
+            border-image-slice: 1;
 
             #login-form{
                 display: grid;
@@ -188,8 +196,13 @@ export default {
         }
 
         #info {
-            width: 30%;
+            text-align: left;
+            padding-left: 20px;
             height: 100%;
+
+            h2:first-child {
+                margin-top: 0px;
+            }
         }
     }
 </style>
