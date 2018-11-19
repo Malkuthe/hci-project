@@ -32,18 +32,9 @@ export default {
 }
 </script>
 
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 
 <style lang="scss">
-
-.card {
-  background: $light-blue-grey;
-  padding: 20px 10px;
-  box-shadow: 
-    0 2px 2px 0 rgba(0,0,0,0.14), 
-    0 3px 1px -2px rgba(0,0,0,0.12), 
-    0 1px 5px 0 rgba(0,0,0,0.2);
-  border-radius: 3px;
-}
 
 .slide-left-enter-active {
   transition: 0.33s;
@@ -82,12 +73,14 @@ body {
     grid-column: 1 / -1;
     grid-row: 2 / 3;
     display: grid;
+    padding-top: 80px;
     grid-template-columns: inherit;
     grid-template-rows: auto 30px;
 
       #content {
       width: 100%;
       max-width: 70vw;
+      padding-bottom: 80px;
       grid-row: 1 / 2;
       grid-column: 2 / 3;
     }
@@ -108,7 +101,7 @@ body {
 
     #footer {
       grid-column: 2 / -2;
-      color: $light-blue-grey;
+      color: $pale-blue-grey;
       font-size: 70%;
 
       a {

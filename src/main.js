@@ -3,12 +3,20 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
+import { 
+  faUserCircle,
+  faEdit,
+  faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import Multiselect from 'vue-multiselect'
 
-library.add(faUserCircle)
+library.add([
+  faUserCircle,
+  faEdit,
+  faExclamationTriangle ])
 
-Vue.component('fa-icon', FontAwesomeIcon);
+Vue.component('fa-icon', FontAwesomeIcon)
+Vue.component('v-select', Multiselect)
 
 Vue.config.productionTip = false
 

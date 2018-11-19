@@ -8,12 +8,13 @@
     },
     "studentNum": "12345678",
     "address": {
-        "street": "123 Test Drive",
+        "line1": "123 Test Drive",
         "city": "Winnipeg",
         "province": "Manitoba",
-        "postcode": "R2L191"
+        "postcode": "R2L 191"
     },
     "studentEmail": "mctesterfacet@myumanitoba.ca",
+    "phoneNum": "1-800-252-5252",
     "accountBalance": {
         "fall2015": 0,
         "winter2016": 0,

@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home card">
     <h1 id = title> {{title}} </h1>
     <hr noshade align = "left" width = 100%>
     <br>

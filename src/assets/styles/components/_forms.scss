@@ -1,0 +1,150 @@
+/*
+ *  _forms.scss
+ *
+ *  Provides styles for form elements in the Borealis prototype.
+ *
+ *  Author: John Paulo Baltao
+ *
+ */
+
+form {
+
+    input {
+        appearance: none;
+        border: none;
+        transition: 0.5s;
+        box-sizing: border-box;
+
+        &:focus {
+            outline: 0;
+            border: 2px solid $brown;
+        }
+
+        &[type="text"], &[type="password"] {
+            height: 40px;
+            width: 100%;
+            padding-left: 7px;
+            border-radius: 3px;
+            border: 2px solid $dark-blue-grey;
+        }
+    }
+
+    #buttons-container {
+        text-align: right;
+
+        button {
+            margin-right: 1.2em;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+
+    button {
+        all: unset;
+        height: 40px;
+        min-width: 40px;
+        width: fit-content;
+        border-radius: 3px;
+        font-size: 80%;
+        padding: 0px 10px;
+        transition: background-color 0.33s;
+        box-shadow: 
+            0 2px 2px 0 rgba(0,0,0,0.14), 
+            0 3px 1px -2px rgba(0,0,0,0.12), 
+            0 1px 5px 0 rgba(0,0,0,0.2);
+        background: $blue;
+        color: $pale-blue;
+        text-align: center;
+
+        &:hover {
+            background: $light-blue;
+        }
+
+        &:active {
+            background: $dark-blue;
+        }
+
+        &.clear {
+            background-color: $blue-grey;
+            color: $very-dark-grey;
+
+            &:hover {
+                background-color: $light-blue-grey;
+            }
+
+            &:active {
+                color: $pale-grey;
+                background-color: $dark-blue-grey;
+            }
+        }
+
+        &.cancel {
+            background-color: $red;
+
+            &:hover {
+                background-color: $light-red;
+            }
+
+            &:active {
+                background-color: $dark-red;
+            }
+        }
+    }
+
+    & > div {
+        margin-top: 1.2em;
+
+        &:first-child {
+            margin-top: 0;
+        }
+        
+        &.field {
+
+            label {
+                display: block;
+                font-size: 70%;
+                margin-bottom: 0.2em;
+
+                span.err {
+                    color: $red;
+                    margin-left: 1.2em;
+                }
+            
+            }
+
+        }
+
+    }
+
+}
+
+// Fixes for multiselect styling
+.multiselect {
+
+    &.multiselect--active {
+        min-height: 40px;
+
+        .multiselect__tags {
+            padding: 0px;
+
+            .multiselect__input {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    input {
+
+        &[type="text"].multiselect__input {
+            border: none;
+    
+            &:focus {
+                border:none;
+            }
+        }
+
+    }
+
+}

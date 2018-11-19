@@ -91,7 +91,6 @@ export default {
     #login {
         margin-left: auto;
         margin-right: auto;
-        margin-top: 80px;
         width: 80%;
         min-height: 300px;
         display: grid;
@@ -101,9 +100,9 @@ export default {
         #form {
             grid-area: form;
             padding-right: 20px;
-            border-right: 1px solid rgba($dark-grey,0.85);
+            border-right: 1px solid rgba($dark-blue-grey,0.85);
             border-left: 0;
-            border-image: linear-gradient(rgba(0,0,0,0),rgba($dark-grey,0.85) 30%, rgba($dark-grey,0.85) 70%, rgba(0,0,0,0));
+            border-image: linear-gradient(rgba(0,0,0,0),rgba($dark-blue-grey,0.85) 30%, rgba($dark-blue-grey,0.85) 70%, rgba(0,0,0,0));
             border-style: solid;
             border-image-slice: 1;
 
@@ -116,6 +115,7 @@ export default {
 
                 label {
                     grid-area: label;
+                    font-size: 100%;
                     display: flex;
                     align-items: center;
                     
@@ -136,7 +136,7 @@ export default {
                     appearance: none;
                     border: none;
                     padding-left: 4px;
-                    border: 2px solid $dark-grey;
+                    border: 2px solid $dark-blue-grey;
                     transition: 0.5s;
 
                     &.username {

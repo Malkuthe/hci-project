@@ -9,7 +9,6 @@
 <style lang="scss" scoped>
     #logout {
         width: 50%;
-        margin-top: 80px;
         margin-left: auto;
         margin-right: auto;
 

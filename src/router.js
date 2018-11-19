@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
-import Login from './views/Login.vue'
-import Logout from './views/Logout.vue'
+import Home from '@/views/Home.vue'
+import Login from '@/views/Login.vue'
+import Logout from '@/views/Logout.vue'
+import Account from '@/views/Account.vue'
 
 Vue.use(Router)
 
@@ -24,6 +25,14 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: Login,
+    },
+    {
+      path: '/account',
+      name: 'account',
+      component: Account,
+      meta: {
+        requiresLogin: true
+      }
     },
     {
       path: '/about',

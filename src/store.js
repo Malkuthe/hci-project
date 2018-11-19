@@ -14,10 +14,13 @@ const mutations = {
     state.loggedIn = false
   },
   resetLogoutTimer(state) {
-    state.logoutTimer = state.logoutTime;
+    state.logoutTimer = state.logoutTime
   },
   decrementLogoutTimer(state) {
-    state.logoutTimer--;
+    state.logoutTimer--
+  },
+  editUserData(state, data) {
+    Vue.set(state.mockUser,data.key,data.data);
   }
 }
 
