@@ -5,11 +5,9 @@
 </template>
 
 <script>
+
 export default {
     name: 'hci-footer'
 }
+
 </script>
-
-<style lang="scss" scoped>
-
-</style>

@@ -8,8 +8,8 @@
         <div id="nav__links">
             <ul>
                 <li><router-link v-if='loggedIn' to='/'>Home</router-link></li>
-                <li><router-link v-if='loggedIn' to='/about'>About</router-link></li>
-                <li><router-link v-if='loggedIn' to='/account'>Account</router-link></li>
+                <li><router-link v-if='loggedIn' to='/lookup'>Lookup Courses</router-link></li>
+                <li><router-link v-if='loggedIn' to='/account'>My Account</router-link></li>
                 <li v-if="loggedIn"><a to='/logout' v-on:click="doLogout" href="javascript:void(0)">Log Out</a></li>
             </ul>
         </div>
