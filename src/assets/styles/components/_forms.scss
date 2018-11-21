@@ -15,17 +15,17 @@ form {
         transition: 0.5s;
         box-sizing: border-box;
 
-        &:focus {
-            outline: 0;
-            border: 2px solid $brown;
-        }
-
-        &[type="text"], &[type="password"] {
+        &.text-input {
             height: 40px;
             width: 100%;
             padding-left: 7px;
             border-radius: 3px;
             border: 2px solid $dark-blue-grey;
+
+            &:focus {
+                outline: 0;
+                border: 2px solid $brown;
+            }
         }
     }
 
@@ -114,35 +114,6 @@ form {
             
             }
 
-        }
-
-    }
-
-}
-
-// Fixes for multiselect styling
-.multiselect {
-
-    &.multiselect--active {
-        min-height: 40px;
-
-        .multiselect__tags {
-            padding: 0px;
-
-            .multiselect__input {
-                margin-bottom: 0;
-            }
-        }
-    }
-
-    input {
-
-        &[type="text"].multiselect__input {
-            border: none;
-    
-            &:focus {
-                border:none;
-            }
         }
 
     }

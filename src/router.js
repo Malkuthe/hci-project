@@ -4,7 +4,7 @@ import Home from '@/views/Home.vue'
 import Login from '@/views/Login.vue'
 import Logout from '@/views/Logout.vue'
 import Account from '@/views/Account.vue'
-import Lookup from '@/views/LookupClasses.vue'
+import LookupPage from '@/views/LookupClasses.vue'
 import RegistrationCurrent from '@/views/Registration/Current.vue'
 import RegistrationEdit from '@/views/Registration/Edit.vue'
 import RegistrationHistory from '@/views/Registration/History.vue'
@@ -12,6 +12,8 @@ import RegistrationInfo from '@/views/Registration/Information.vue'
 import Exams from '@/views/Exams.vue'
 import Grades from '@/views/Grades.vue'
 import Schedule from '@/views/Schedule.vue'
+import Lookup from '@/components/Lookup.vue'
+import Timetable from '@/components/Timetable.vue'
 
 Vue.use(Router)
 
@@ -45,10 +47,20 @@ export default new Router({
     {
       path: '/lookup',
       name: 'lookup',
-      component: Lookup,
+      component: LookupPage,
       meta: {
         requiresLogin: true
-      }
+      },
+      children: [
+        {
+          path: '',
+          component: Lookup
+        },
+        {
+          path: 'timetable',
+          component: Timetable
+        }
+      ]
     },
     {
       path: '/current-registration',

@@ -6,14 +6,22 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { 
   faUserCircle,
   faEdit,
-  faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
+  faExclamationTriangle,
+  faChevronCircleLeft,
+  faChevronCircleDown,
+  faTimesCircle,
+  faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Multiselect from 'vue-multiselect'
 
 library.add([
   faUserCircle,
   faEdit,
-  faExclamationTriangle ])
+  faExclamationTriangle,
+  faChevronCircleLeft,
+  faChevronCircleDown,
+  faTimesCircle,
+  faCheckCircle ])
 
 Vue.component('fa-icon', FontAwesomeIcon)
 Vue.component('v-select', Multiselect)

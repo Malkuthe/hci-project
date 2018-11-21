@@ -1,0 +1,512 @@
+{
+    "terms": [
+        {
+            "name": "Fall 2018",
+            "code": "fall2018"
+        },
+        {
+            "name": "Winter 2019",
+            "code": "winter2019"
+        }
+    ],
+    "departments": [
+        {
+            "name": "Accounting",
+            "code": "accounting"
+        },
+        {
+            "name": "Computer Science",
+            "code": "computer-science"
+        }
+    ],
+    "fall2018": {
+        "accounting": {
+            "courses": [
+                "acc1100",
+                "acc1110"
+            ],
+            "acc1100": {
+                "code": "acc1100",
+                "sections": [
+                    "a01",
+                    "a02",
+                    "a03"
+                ],
+                "name": "Introductory Financial Accounting",
+                "description": "(Lab required). Examination of accounting postulates underlying the preparation and presentation of financial statements.",
+                "a01": {
+                    "crn": 11150,
+                    "campus": "M",
+                    "credits": 3.00,
+                    "days": "MWF",
+                    "start": 830,
+                    "end": 920,
+                    "slots": {
+                        "max": 90,
+                        "actual": 87
+                    },
+                    "waitlist": {
+                        "max": 999,
+                        "actual": 0
+                    },
+                    "instructor": "Noha Gattas",
+                    "startDate": "09/05",
+                    "endDate": "1207",
+                    "location": "107 Drake Centre",
+                    "details": "Dry/Tutorial Lab"
+                },
+                "a02": {
+                    "crn": 11150,
+                    "campus": "M",
+                    "credits": 3.00,
+                    "days": "MWF",
+                    "start": 930,
+                    "end": 1020,
+                    "slots": {
+                        "max": 90,
+                        "actual": 87
+                    },
+                    "waitlist": {
+                        "max": 999,
+                        "actual": 0
+                    },
+                    "instructor": "Noha Gattas",
+                    "startDate": "09/05",
+                    "endDate": "1207",
+                    "location": "107 Drake Centre",
+                    "details": "Dry/Tutorial Lab"
+                },
+                "a03": {
+                    "crn": 11151,
+                    "campus": "M",
+                    "credits": 3.00,
+                    "days": "MWF",
+                    "start": 1030,
+                    "end": 1120,
+                    "slots": {
+                        "max": 90,
+                        "actual": 87
+                    },
+                    "waitlist": {
+                        "max": 999,
+                        "actual": 0
+                    },
+                    "instructor": "Noha Gattas",
+                    "startDate": "09/05",
+                    "endDate": "1207",
+                    "location": "107 Drake Centre",
+                    "details": "Dry/Tutorial Lab"
+                }
+            },
+            "acc1110": {
+                "code": "acc1110",
+                "sections": [
+                    "a01",
+                    "a02"
+                ],
+                "name": "Introductory Managerial Accounting",
+                "description": "(Lab required). Role of accounting in creation and application of business information used by decision-makers in the management of enterprise.",
+                "prerequisites": {
+                    "graded": [
+                        {
+                            "code": "acc1100",
+                            "grade": "d"
+                        },
+                        {
+                            "code": "econ1010",
+                            "grade": "d"
+                        },
+                        {
+                            "code": "econ1020",
+                            "grade": "d"
+                        }
+                    ]
+                },
+                "a01": {
+                    "crn": 11160,
+                    "campus": "M",
+                    "credits": 3.00,
+                    "days": "MWF",
+                    "start": 830,
+                    "end": 920,
+                    "slots": {
+                        "max": 90,
+                        "actual": 87
+                    },
+                    "waitlist": {
+                        "max": 999,
+                        "actual": 0
+                    },
+                    "instructor": "Alexandra McMullen",
+                    "startDate": "09/05",
+                    "endDate": "1207",
+                    "location": "107 Drake Centre",
+                    "details": "Dry/Tutorial Lab"
+                },
+                "a02": {
+                    "crn": 11161,
+                    "campus": "M",
+                    "credits": 3.00,
+                    "days": "MWF",
+                    "start": 930,
+                    "end": 1020,
+                    "slots": {
+                        "max": 90,
+                        "actual": 87
+                    },
+                    "waitlist": {
+                        "max": 999,
+                        "actual": 0
+                    },
+                    "instructor": "Alexandra McMullen",
+                    "startDate": "09/05",
+                    "endDate": "1207",
+                    "location": "107 Drake Centre",
+                    "details": "Dry/Tutorial Lab"
+                }
+            }
+        },
+        "computer-science": {
+            "courses": [
+                "comp1010"
+            ],
+            "comp1010": {
+                "code": "comp1010",
+                "sections": [
+                    "a01",
+                    "a02"
+                ],
+                "name": "Computer Science 1",
+                "description": "(Lab Required). An introduction to computer programming using a procedural high level language.",
+                "prerequisites": {
+                    "held": [
+                        "comp1010",
+                        "eng1030"
+                    ]
+                },
+                "a01": {
+                    "labs": [
+                        "b01",
+                        "b02"
+                    ],
+                    "crn": 11150,
+                    "campus": "M",
+                    "credits": 3.00,
+                    "days": "MWF",
+                    "start": 830,
+                    "end": 920,
+                    "slots": {
+                        "max": 90,
+                        "actual": 87
+                    },
+                    "waitlist": {
+                        "max": 999,
+                        "actual": 0
+                    },
+                    "instructor": "Daniel J. Rea",
+                    "startDate": "09/05",
+                    "endDate": "1207",
+                    "location": "107 Drake Centre",
+                    "details": "Dry/Tutorial Lab"
+                },
+                "a02": {
+                    "labs": [
+                        "b02",
+                        "b03"
+                    ],
+                    "crn": 11150,
+                    "campus": "M",
+                    "credits": 3.00,
+                    "days": "MWF",
+                    "start": 930,
+                    "end": 1020,
+                    "slots": {
+                        "max": 90,
+                        "actual": 87
+                    },
+                    "waitlist": {
+                        "max": 999,
+                        "actual": 0
+                    },
+                    "instructor": "Gord Boyer",
+                    "startDate": "09/05",
+                    "endDate": "1207",
+                    "location": "107 Drake Centre",
+                    "details": "Dry/Tutorial Lab"
+                },
+                "b01": {
+                    "crn": 11150,
+                    "campus": "M",
+                    "credits": 3.00,
+                    "days": "M",
+                    "start": 800,
+                    "end": 1100,
+                    "slots": {
+                        "max": 90,
+                        "actual": 87
+                    },
+                    "waitlist": {
+                        "max": 999,
+                        "actual": 0
+                    },
+                    "instructor": "Daniel J. Rea",
+                    "startDate": "09/05",
+                    "endDate": "1207",
+                    "location": "107 Drake Centre",
+                    "details": "Dry/Tutorial Lab"
+                },
+                "b02": {
+                    "crn": 11150,
+                    "campus": "M",
+                    "credits": 3.00,
+                    "days": "W",
+                    "start": 800,
+                    "end": 1100,
+                    "slots": {
+                        "max": 90,
+                        "actual": 87
+                    },
+                    "waitlist": {
+                        "max": 999,
+                        "actual": 0
+                    },
+                    "instructor": "Daniel J. Rea",
+                    "startDate": "09/05",
+                    "endDate": "1207",
+                    "location": "107 Drake Centre",
+                    "details": "Dry/Tutorial Lab"
+                },
+                "b03": {
+                    "crn": 11150,
+                    "campus": "M",
+                    "credits": 3.00,
+                    "days": "F",
+                    "start": 800,
+                    "end": 1100,
+                    "slots": {
+                        "max": 90,
+                        "actual": 87
+                    },
+                    "waitlist": {
+                        "max": 999,
+                        "actual": 0
+                    },
+                    "instructor": "Daniel J. Rea",
+                    "startDate": "09/05",
+                    "endDate": "1207",
+                    "location": "107 Drake Centre",
+                    "details": "Dry/Tutorial Lab"
+                }
+            }
+        }
+    },
+    "winter2019": {
+        "accounting": {
+            "courses": [
+                "acc1110"
+            ],
+            "acc1110": {
+                "code": "acc1110",
+                "sections": [
+                    "a01",
+                    "a02"
+                ],
+                "name": "Introductory Managerial Accounting",
+                "description": "(Lab required). Role of accounting in creation and application of business information used by decision-makers in the management of enterprise.",
+                "prerequisites": {
+                    "graded": [
+                        {
+                            "code": "acc1100",
+                            "grade": "d"
+                        },
+                        {
+                            "code": "econ1010",
+                            "grade": "d"
+                        },
+                        {
+                            "code": "econ1020",
+                            "grade": "d"
+                        }
+                    ]
+                },
+                "a01": {
+                    "crn": 11160,
+                    "campus": "M",
+                    "credits": 3.00,
+                    "days": "MWF",
+                    "start": 830,
+                    "end": 920,
+                    "slots": {
+                        "max": 90,
+                        "actual": 87
+                    },
+                    "waitlist": {
+                        "max": 999,
+                        "actual": 0
+                    },
+                    "instructor": "Alexandra McMullen",
+                    "startDate": "09/05",
+                    "endDate": "1207",
+                    "location": "107 Drake Centre",
+                    "details": "Dry/Tutorial Lab"
+                },
+                "a02": {
+                    "crn": 11161,
+                    "campus": "M",
+                    "credits": 3.00,
+                    "days": "MWF",
+                    "start": 930,
+                    "end": 1020,
+                    "slots": {
+                        "max": 90,
+                        "actual": 87
+                    },
+                    "waitlist": {
+                        "max": 999,
+                        "actual": 0
+                    },
+                    "instructor": "Alexandra McMullen",
+                    "startDate": "09/05",
+                    "endDate": "1207",
+                    "location": "107 Drake Centre",
+                    "details": "Dry/Tutorial Lab"
+                }
+            }
+        },
+        "computer-science": {
+            "courses": [
+                "comp1020"
+            ],
+            "comp1020": {
+                "code": "comp1020",
+                "sections": [
+                    "a01",
+                    "a02"
+                ],
+                "name": "Computer Science 2",
+                "description": "(Lab Required). An introduction to computer programming using a procedural high level language.",
+                "prerequisites": {
+                    "graded": [
+                        {
+                        "code": "comp1010",
+                        "grade": "c"
+                        }
+                    ]
+                },
+                "a01": {
+                    "labs": [
+                        "b01",
+                        "b02"
+                    ],
+                    "crn": 11150,
+                    "campus": "M",
+                    "credits": 3.00,
+                    "days": "MWF",
+                    "start": 830,
+                    "end": 920,
+                    "slots": {
+                        "max": 90,
+                        "actual": 87
+                    },
+                    "waitlist": {
+                        "max": 999,
+                        "actual": 0
+                    },
+                    "instructor": "Daniel J. Rea",
+                    "startDate": "09/05",
+                    "endDate": "1207",
+                    "location": "107 Drake Centre",
+                    "details": "Dry/Tutorial Lab"
+                },
+                "a02": {
+                    "labs": [
+                        "b02",
+                        "b03"
+                    ],
+                    "crn": 11150,
+                    "campus": "M",
+                    "credits": 3.00,
+                    "days": "MWF",
+                    "start": 930,
+                    "end": 1020,
+                    "slots": {
+                        "max": 90,
+                        "actual": 87
+                    },
+                    "waitlist": {
+                        "max": 999,
+                        "actual": 0
+                    },
+                    "instructor": "Gord Boyer",
+                    "startDate": "09/05",
+                    "endDate": "1207",
+                    "location": "107 Drake Centre",
+                    "details": "Dry/Tutorial Lab"
+                },
+                "b01": {
+                    "crn": 11150,
+                    "campus": "M",
+                    "credits": 3.00,
+                    "days": "M",
+                    "start": 800,
+                    "end": 1100,
+                    "slots": {
+                        "max": 90,
+                        "actual": 87
+                    },
+                    "waitlist": {
+                        "max": 999,
+                        "actual": 0
+                    },
+                    "instructor": "Daniel J. Rea",
+                    "startDate": "09/05",
+                    "endDate": "1207",
+                    "location": "107 Drake Centre",
+                    "details": "Dry/Tutorial Lab"
+                },
+                "b02": {
+                    "crn": 11150,
+                    "campus": "M",
+                    "credits": 3.00,
+                    "days": "W",
+                    "start": 800,
+                    "end": 1100,
+                    "slots": {
+                        "max": 90,
+                        "actual": 87
+                    },
+                    "waitlist": {
+                        "max": 999,
+                        "actual": 0
+                    },
+                    "instructor": "Daniel J. Rea",
+                    "startDate": "09/05",
+                    "endDate": "1207",
+                    "location": "107 Drake Centre",
+                    "details": "Dry/Tutorial Lab"
+                },
+                "b03": {
+                    "crn": 11150,
+                    "campus": "M",
+                    "credits": 3.00,
+                    "days": "F",
+                    "start": 800,
+                    "end": 1100,
+                    "slots": {
+                        "max": 90,
+                        "actual": 87
+                    },
+                    "waitlist": {
+                        "max": 999,
+                        "actual": 0
+                    },
+                    "instructor": "Daniel J. Rea",
+                    "startDate": "09/05",
+                    "endDate": "1207",
+                    "location": "107 Drake Centre",
+                    "details": "Dry/Tutorial Lab"
+                }
+            }
+        }
+    }
+}

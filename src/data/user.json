@@ -29,12 +29,12 @@
     "coursesHeld": {
         "comp1010": {
             "name": "Intro to Computer Science 1",
-            "mark": "C",
+            "grade": "C",
             "term": "fall2017"
         },
         "comp1020": {
             "name": "Intro to Computer Science 2",
-            "mark": "C",
+            "grade": "C",
             "term": "winter2018"
         }
     },

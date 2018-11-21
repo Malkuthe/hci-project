@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import config from '@/config.json'
 import testdata from '@/data/testdata.json'
 import userdata from '@/data/user.json'
+import coursedata from '@/data/courses.json'
 
 Vue.use(Vuex)
 
@@ -24,11 +25,29 @@ const mutations = {
   }
 }
 
+const getters = {
+  findCourse: (state) => (code) => {
+    var i, j
+    for (i = 0; i < state.courses.terms.length; i++) {
+      var term = state.courses.terms[i].code
+      for(j = 0; j < state.courses.departments.length; j++) {
+        var dept = state.courses.departments[j].code
+        if(state.courses[term][dept].courses.includes(code)) {
+          return state.courses[term][dept][code]
+        }
+      }
+    }
+
+    return null
+  }
+}
+
 export default new Vuex.Store({
   state: {
     testdata,
     line: "checking if this is accessible",
     mockUser: userdata,
+    courses: coursedata,
     loggedIn: false,
     logoutTime: config.logoutTime,
     logoutTimer: config.logoutTime
@@ -37,7 +56,5 @@ export default new Vuex.Store({
   actions: {
 
   },
-  getters: {
-    
-  }
+  getters: getters
 })

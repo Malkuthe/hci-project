@@ -22,6 +22,7 @@
                         name='line1'
                         v-model='line1'
                         id='line1' 
+                        class='text-input' 
                         type='text'
                         placeholder='Address Line 1' />
                 </div>
@@ -31,6 +32,7 @@
                         name='line2'
                         v-model='line2'
                         id='line2'
+                        class='text-input'
                         type='text'
                         placeholder='Address Line 2' />
                 </div>
@@ -41,6 +43,7 @@
                         name='city'
                         v-model='city'
                         id='city'
+                        class='text-input'
                         type='text'
                         placeholder='City' />
                 </div>
@@ -60,6 +63,7 @@
                         name='postcode'
                         v-model='postcode'
                         id='postcode'
+                        class='text-input'
                         type='text'
                         placeholder='Postal Code' />
                 </div>
