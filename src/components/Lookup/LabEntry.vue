@@ -1,7 +1,5 @@
 <template>
-    <div class='lecture-entry section-entry' 
-        :id="'lecture-entry--' + affix"
-        :class="{ 'no-bottom-padding': hasLabs }">
+    <div class='lab-entry section-entry' :id="'lab-entry--' + affix">
         <div class='header'>
             <span class='name'>{{ name }}</span> 
             <span class='crn'>(CRN: {{ section.crn }})</span>
@@ -49,7 +47,7 @@
                 <div class='attributes'>{{ section.details }}</div>
             </div>
         </div>
-        <div class='registration-buttons buttons-container' v-if='!hasLabs'>
+        <div class='registration-buttons buttons-container'>
             <span v-if='dropConfirm' class='error drop-confirm'><fa-icon icon='exclamation-triangle' /> You are about to drop this course. Are you sure?</span>
             <span v-if='!canRegister && !(alreadyRegistered || alreadyWaitlisted) && !dropConfirm && !hasTimeConflict' class='error cannot-register'><fa-icon icon='exclamation-triangle' /> You cannot register for this section! View the course entry above for more details</span>
             <span v-if='(alreadyRegistered || alreadyWaitlisted) && !dropConfirm && !hasTimeConflict' class='error already-registered'><fa-icon icon='exclamation-triangle' />You are already registered/waitlisted for this section!</span>
@@ -59,7 +57,7 @@
                 class='waitlist'
                 :type="registerButtonType"
                 :class="{'disabled': (alreadyRegistered || alreadyWaitlisted || hasTimeConflict || !canRegister) }"
-                @click='waitlistThisLecture'
+                @click='waitlistThisLab'
                 v-if='!dropConfirm' >Waitlist</button>
             <button
                 name='drop-no'
@@ -71,45 +69,21 @@
                 name='drop-yes'
                 class='drop-yes red'
                 type='button'
-                @click='dropThisLecture'
+                @click='dropThisLab'
                 v-if='dropConfirm' >Yes</button>
             <button
                 name='drop'
                 class='drop red'
                 type='button'
-                @click='dropThisLecture'
+                @click='dropThisLab'
                 v-if='(alreadyRegistered || alreadyWaitlisted ) && !dropConfirm' >Drop</button>
             <button
                 name='register'
                 class='register'
                 :type="registerButtonType"
                 :class="{'disabled': (alreadyRegistered || alreadyWaitlisted || hasTimeConflict || !canRegister) }"
-                @click='registerThisLecture'
+                @click='registerThisLab'
                 v-if='!dropConfirm' >Register</button>
-        </div>
-        <div class='labs-tooltip' v-if='hasLabs'>
-            <p><fa-icon icon='exclamation-triangle' /> Register to this class by registering to one of the laboratory sections below.</p>
-        </div>
-        <div class='labs' v-if='hasLabs'>
-            <div class='header' @click='showLabs = !showLabs'>
-                <div class='title'>
-                    Laboratories
-                </div>
-                <div class='chevron'>
-                    <fa-icon :icon=" showLabs ? 'chevron-circle-down' : 'chevron-circle-left'" />
-                </div>
-            </div>
-            <div v-if='showLabs'>
-                <lab-section
-                    v-for='lab in labs'
-                    :key='lab.code'
-                    :term='term'
-                    :course='course'
-                    :dept='dept'
-                    :section='lab'
-                    :lecture='section'
-                    :can-register='!err' />
-            </div>
         </div>
     </div>
 </template>
@@ -117,13 +91,11 @@
 <script>
 import { mapState, mapMutations } from 'vuex'
 import Day from '@/components/Lookup/Day.vue'
-import LabSection from '@/components/Lookup/LabEntry.vue'
 
 export default {
-    name: 'lecture-entry',
+    name: 'lab-entry',
     components: {
-        sectionDay: Day,
-        labSection: LabSection
+        sectionDay: Day
     },
     props: {
         term: {
@@ -139,6 +111,10 @@ export default {
             required: true
         },
         section: {
+            type: Object,
+            required: true
+        },
+        lecture: {
             type: Object,
             required: true
         },
@@ -160,38 +136,46 @@ export default {
     },
     methods: {
         ...mapMutations([
-            'registerLecture',
-            'waitlistLecture',
-            'dropRegisteredLecture',
-            'dropWaitlistedLecture'
+            'registerLab',
+            'waitlistLab',
+            'dropRegisteredLab',
+            'dropWaitlistedLab'
         ]),
-        registerThisLecture() {
+        registerThisLab() {
             if (this.err) return
+            var registerLab = {}
+            registerLab[this.section.code] = this.section
+            registerLab[this.section.code].lecture = this.lecture.code
             var registerLecture = {}
-            registerLecture[this.section.code] = this.section
+            registerLecture[this.lecture.code] = this.lecture
+            registerLecture[this.lecture.code].lab = this.section.code
             var registerCourse = {}
-            registerCourse[this.course.code] = registerLecture
+            registerCourse[this.course.code] = {...registerLecture,...registerLab}
             var registerDept = {}
             registerDept[this.dept.code] = registerCourse
             var registerTerm = {}
             registerTerm[this.term.code] = registerDept
             
-            this.registerLecture(registerTerm)
+            this.registerLab(registerTerm)
         },
-        waitlistThisLecture() {
+        waitlistThisLab() {
             if (this.err) return
+            var registerLab = {}
+            registerLab[this.section.code] = this.section
+            registerLab[this.section.code].lecture = this.lecture.code
             var registerLecture = {}
-            registerLecture[this.section.code] = this.section
+            registerLecture[this.lecture.code] = this.lecture
+            registerLecture[this.lecture.code].lab = this.section.code
             var registerCourse = {}
-            registerCourse[this.course.code] = registerLecture
+            registerCourse[this.course.code] = {...registerLecture,...registerLab}
             var registerDept = {}
             registerDept[this.dept.code] = registerCourse
             var registerTerm = {}
             registerTerm[this.term.code] = registerDept
             
-            this.waitlistLecture(registerTerm)
+            this.waitlistLab(registerTerm)
         },
-        dropThisLecture() {
+        dropThisLab() {
             if (!this.dropConfirm) {
                 this.dropConfirm = true
                 return
@@ -200,22 +184,23 @@ export default {
                 term: this.term.code,
                 dept: this.dept.code,
                 course: this.course.code,
-                section: this.section.code
+                lab: this.section.code,
+                lecture: this.lecture.code
             }
 
             if(this.alreadyRegistered) {
-                this.dropRegisteredLecture(details)
+                this.dropRegisteredLab(details)
             }
 
             if(this.alreadyWaitlisted) {
-                this.dropWaitlistedLecture(details)
+                this.dropWaitlistedLab(details)
             }
             this.dropConfirm = false
         }
     },
     computed: {
         ...mapState([
-            'mockUser',
+            'mockUser'
         ]),
         affix() {
             return this.section.code + '-' 
@@ -252,21 +237,6 @@ export default {
             }
             return hour + ':' + minute + ' ' + time
         },
-        hasLabs() {
-            if (!this.section.labs) return false
-            if (this.section.labs.length <= 0) return false
-            return true
-        },
-        labs() {
-            if(!this.hasLabs) return null
-            var labs = []
-
-            for(var i = 0; i < this.section.labs.length; i++) {
-                labs.push(this.course[this.section.labs[i]]);
-            }
-
-            return labs;
-        },
         alreadyRegistered() {
             if(!this.mockUser.registeredCourses) return false
             if(this.mockUser.registeredCourses.length == 0) return false
@@ -285,7 +255,6 @@ export default {
             if(!this.mockUser.waitlistedCourses[this.term.code][this.dept.code]) return false
             if(!this.mockUser.waitlistedCourses[this.term.code][this.dept.code][this.course.code]) return false
             if(this.mockUser.waitlistedCourses[this.term.code][this.dept.code][this.course.code].hasOwnProperty(this.section.code)) return true
-            return false
         },
         hasTimeConflict() {
             if(!this.mockUser.waitlistedCourses && !this.mockUser.registeredCourses) return false
@@ -378,180 +347,5 @@ export default {
 }
 </script>
 
-<style lang='scss'>
-    .section-entry {
-        box-sizing: border-box;
-        border-left: 10px solid rgba($brown,0.4);
-        border-bottom: 1px solid $grey;
-        padding: 10px;
-        min-height: 80px;
-
-        .error {
-            margin-right: 8px;
-        }
-
-        &.no-bottom-padding {
-            padding-bottom: 0;
-        }
-
-        & > .header {
-            margin-bottom: 0.5em;
-
-            .name {
-                font-size: 100%;
-                font-weight: bold;
-            }
-
-            .crn {
-                font-size: 80%;
-                margin-left: 0.5em;
-            }
-        }
-
-        .basic-info {
-            font-size: 90%;
-            display: grid;
-            grid-template-columns: 2fr 1fr 3fr;
-            grid-template-rows: auto;
-        }
-
-        .labs {
-            margin-left: -10px;
-            margin-right: -10px;
-
-            & > .header {
-                border-top: 1px solid $grey;
-                background-color: rgba($grey,0.3);
-                margin-top: 0.6em;
-                margin-bottom: 0px;
-                padding: 10px;
-                font-size: 90%;
-                font-weight: bold;
-                border-bottom: 1px solid $grey;
-                display: grid;
-                grid-template-columns: repeat(12, 1fr);
-                grid-template-rows: auto;
-                box-sizing: border-box;
-                border-left: 10px solid rgba($brown,0.4);
-                border-bottom: 1px solid $grey;
-                padding: 10px;
-
-                > .title {
-                    grid-column: 1 / -2;
-                    align-self: center;
-                    justify-self: start;
-                }
-
-                > .chevron {
-                    grid-column: -2 / -1;
-                    align-self: center;
-                    justify-self: end;
-                }
-            }
-        }
-
-        .info-table {
-            display: grid;
-            margin-top: 0.6em;
-            grid-template-columns: repeat(12,1fr);
-            grid-template-rows: auto;
-            font-size: 90%;
-
-            .table-body {
-                grid-column: 1 / -1;
-                display: grid;
-                grid-template-columns: inherit;
-                grid-template-rows: auto;
-                border: 1px solid $dark-grey;
-                border-top: none;
-                box-sizing: border-box;
-
-                & > div {
-                    min-height: 60px;
-                    display: flex;
-                    flex-direction: column;
-                    height: 100%;
-                    width: 100%;
-                    align-items: center;
-                    justify-content: center;
-                    border-right: 1px solid $grey;
-                    
-                    &:last-child {
-                        border-right: 0;
-                    }
-
-                    // &.dates {
-                    //     font-size: 80%; 
-                    // }
-                }
-
-                .location {
-                    grid-column: 9 / 11;
-                }
-
-                .attributes {
-                    grid-column: 11 / 13;
-                }
-            }
-
-            .header {
-                grid-column: 1 / -1;
-                display: grid;
-                grid-template-columns: inherit;
-                grid-template-rows: auto;
-                border-top-left-radius: 3px;
-                border-top-right-radius: 3px;
-                border: 1px solid $dark-grey;
-                margin-bottom: 0;
-                align-items: center;
-                justify-items: center;
-                font-weight: bold;
-                background-color: rgba($grey,0.15);
-                box-sizing: border-box;
-
-                div {
-                    width: 100%;
-                    height: 100%;
-                    min-height: 25px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    border-right: 1px solid $grey;
-                }
-
-                .campus {
-                    grid-column: 1 / 2;
-                    grid-row: 1 / 3;
-                }
-
-                .slots {
-                    grid-column: 2 / 5;
-                    grid-row: 1 / 2;
-                    border-bottom: 1px solid $grey;
-                }
-
-                .waitlist {
-                    grid-column: 5 / 8;
-                    grid-row: 1 / 2;
-                    border-bottom: 1px solid $grey;
-                }
-
-                .dates {
-                    grid-column: 8 / 9;
-                    grid-row: 1 / 3;
-                }
-
-                .location {
-                    grid-column: 9 / 11;
-                    grid-row: 1 / 3;
-                }
-
-                .attributes {
-                    grid-column: 11 / 13;
-                    grid-row: 1 / 3;
-                    border-right: none;
-                }
-            }
-        }
-    }
+<style lang='scss' scoped>
 </style>

@@ -4,7 +4,7 @@
     <div id="main">
       <div id="content">
         <transition name="slide-left">
-          <router-view />
+          <router-view mode='out-in'/>
         </transition>
       </div>
       <div id="footer-container"><hci-footer /></div>

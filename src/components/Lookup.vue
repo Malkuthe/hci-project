@@ -12,7 +12,7 @@
                             v-model='term'
                             id='term'
                             :options='courses.terms'
-                            :searchable='false'
+                            :searchable='true'
                             track-by='name'
                             label='name' />
                     </div>
@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 import DepartmentEntry from '@/components/Lookup/DepartmentEntry.vue'
 
 export default {
@@ -61,12 +61,14 @@ export default {
     },
     data() {
         return {
-            term: this.$store.state.mockUser.selectedTerm,
-            department: [],
+            department: this.$store.state.mockUser.selectedDepartment,
             foundCourses: []
         }
     },
     methods: {
+        ...mapMutations([
+            'editUserData'
+        ]),
         getCourses(dept) {
             var courseCodes = this.courses[this.term.code][dept.code].courses
             var courses = []
@@ -79,7 +81,6 @@ export default {
         },
         sortDepartments() {
             this.department.sort(function(a,b) {
-                console.log("Test")
                 if (a.code < b.code) {
                     return -1
                 } else if (a.code > b.code) {
@@ -90,10 +91,30 @@ export default {
             })
         }
     },
+    watch: {
+        department: function() {
+            this.editUserData({
+                key: 'selectedDepartment',
+                data: this.department
+            })
+        }
+    },
     computed: {
         ...mapState([
-            'courses'
-        ])
+            'courses',
+            'mockUser'
+        ]),
+        term: {
+            set(term) {
+                this.editUserData({
+                    key: 'selectedTerm',
+                    data: term
+                })
+            },
+            get() {
+                return this.mockUser.selectedTerm
+            }
+        }
     }
 }
 </script>
@@ -134,10 +155,13 @@ export default {
 
         #lookup-entry-container {
             margin-top: 30px;
+            max-height: 500px;
             border-radius: 3px;
             border: 1px solid $grey;
             background-color: $pale-grey;
             box-sizing: border-box;
+            overflow-y: auto;
+            overflow-x: hidden;
 
             .department {
                 

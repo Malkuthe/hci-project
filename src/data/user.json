@@ -38,5 +38,45 @@
             "term": "winter2018"
         }
     },
-    "holds": []
+    "holds": [],
+    "selectedTerm": {
+        "name": "Fall 2018",
+        "code": "fall2018"
+    },
+    "selectedDepartment": [],
+    "registeredCourses": {
+        "fall2018": {
+            "chemistry": {
+                "chem2280": {
+                    "a02": {
+                        "labs": [
+                            "b02",
+                            "b03"
+                        ],
+                        "code": "a02",
+                        "crn": 11150,
+                        "campus": "M",
+                        "credits": "3.00",
+                        "days": "MWF",
+                        "start": "0930",
+                        "end": "1020",
+                        "slots": {
+                            "max": 90,
+                            "actual": 87
+                        },
+                        "waitlist": {
+                            "max": 999,
+                            "actual": 0
+                        },
+                        "instructor": "Gord Boyer",
+                        "startDate": "09/05",
+                        "endDate": "12/07",
+                        "location": "107 Drake Centre",
+                        "details": "Dry/Tutorial Lab"
+                    }
+                }
+            }
+        }
+    },
+    "waitlistedCourses": {}
 }

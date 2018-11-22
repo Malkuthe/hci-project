@@ -9,7 +9,9 @@
   },
   "dependencies": {
     "vue": "^2.5.17",
+    "vue-object-merge": "^0.1.6",
     "vue-router": "^3.0.1",
+    "vuebar": "0.0.20",
     "vuex": "^3.0.1"
   },
   "devDependencies": {

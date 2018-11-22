@@ -35,12 +35,13 @@
                 "name": "Introductory Financial Accounting",
                 "description": "(Lab required). Examination of accounting postulates underlying the preparation and presentation of financial statements.",
                 "a01": {
+                    "code":"a01",
                     "crn": 11150,
                     "campus": "M",
-                    "credits": 3.00,
+                    "credits": "3.00",
                     "days": "MWF",
-                    "start": 830,
-                    "end": 920,
+                    "start": "0830",
+                    "end": "0920",
                     "slots": {
                         "max": 90,
                         "actual": 87
@@ -51,17 +52,18 @@
                     },
                     "instructor": "Noha Gattas",
                     "startDate": "09/05",
-                    "endDate": "1207",
+                    "endDate": "12/07",
                     "location": "107 Drake Centre",
                     "details": "Dry/Tutorial Lab"
                 },
                 "a02": {
+                    "code": "a02",
                     "crn": 11150,
                     "campus": "M",
-                    "credits": 3.00,
+                    "credits": "3.00",
                     "days": "MWF",
-                    "start": 930,
-                    "end": 1020,
+                    "start": "0930",
+                    "end": "1020",
                     "slots": {
                         "max": 90,
                         "actual": 87
@@ -72,17 +74,18 @@
                     },
                     "instructor": "Noha Gattas",
                     "startDate": "09/05",
-                    "endDate": "1207",
+                    "endDate": "12/07",
                     "location": "107 Drake Centre",
                     "details": "Dry/Tutorial Lab"
                 },
                 "a03": {
+                    "code": "a03",
                     "crn": 11151,
                     "campus": "M",
-                    "credits": 3.00,
+                    "credits": "3.00",
                     "days": "MWF",
-                    "start": 1030,
-                    "end": 1120,
+                    "start": "1030",
+                    "end": "1120",
                     "slots": {
                         "max": 90,
                         "actual": 87
@@ -93,7 +96,7 @@
                     },
                     "instructor": "Noha Gattas",
                     "startDate": "09/05",
-                    "endDate": "1207",
+                    "endDate": "12/07",
                     "location": "107 Drake Centre",
                     "details": "Dry/Tutorial Lab"
                 }
@@ -123,12 +126,13 @@
                     ]
                 },
                 "a01": {
+                    "code": "a01",
                     "crn": 11160,
                     "campus": "M",
-                    "credits": 3.00,
+                    "credits": "3.00",
                     "days": "MWF",
-                    "start": 830,
-                    "end": 920,
+                    "start": "0830",
+                    "end": "0920",
                     "slots": {
                         "max": 90,
                         "actual": 87
@@ -139,17 +143,18 @@
                     },
                     "instructor": "Alexandra McMullen",
                     "startDate": "09/05",
-                    "endDate": "1207",
+                    "endDate": "12/07",
                     "location": "107 Drake Centre",
                     "details": "Dry/Tutorial Lab"
                 },
                 "a02": {
+                    "code": "a02",
                     "crn": 11161,
                     "campus": "M",
-                    "credits": 3.00,
+                    "credits": "3.00",
                     "days": "MWF",
-                    "start": 930,
-                    "end": 1020,
+                    "start": "0930",
+                    "end": "1020",
                     "slots": {
                         "max": 90,
                         "actual": 87
@@ -160,7 +165,7 @@
                     },
                     "instructor": "Alexandra McMullen",
                     "startDate": "09/05",
-                    "endDate": "1207",
+                    "endDate": "12/07",
                     "location": "107 Drake Centre",
                     "details": "Dry/Tutorial Lab"
                 }
@@ -180,8 +185,11 @@
                 "description": "(Lab Required). An introduction to computer programming using a procedural high level language.",
                 "prerequisites": {
                     "held": [
-                        "comp1010",
-                        "eng1030"
+                        "comp1010"
+                    ],
+                    "notheld": [
+                        "comp1011",
+                        "comp1610"
                     ]
                 },
                 "a01": {
@@ -189,12 +197,13 @@
                         "b01",
                         "b02"
                     ],
+                    "code": "a01",
                     "crn": 11150,
                     "campus": "M",
-                    "credits": 3.00,
+                    "credits": "3.00",
                     "days": "MWF",
-                    "start": 830,
-                    "end": 920,
+                    "start": "0830",
+                    "end": "0920",
                     "slots": {
                         "max": 90,
                         "actual": 87
@@ -205,7 +214,7 @@
                     },
                     "instructor": "Daniel J. Rea",
                     "startDate": "09/05",
-                    "endDate": "1207",
+                    "endDate": "12/07",
                     "location": "107 Drake Centre",
                     "details": "Dry/Tutorial Lab"
                 },
@@ -214,12 +223,13 @@
                         "b02",
                         "b03"
                     ],
+                    "code": "a02",
                     "crn": 11150,
                     "campus": "M",
-                    "credits": 3.00,
+                    "credits": "3.00",
                     "days": "MWF",
-                    "start": 930,
-                    "end": 1020,
+                    "start": "0930",
+                    "end": "1020",
                     "slots": {
                         "max": 90,
                         "actual": 87
@@ -230,17 +240,18 @@
                     },
                     "instructor": "Gord Boyer",
                     "startDate": "09/05",
-                    "endDate": "1207",
+                    "endDate": "12/07",
                     "location": "107 Drake Centre",
                     "details": "Dry/Tutorial Lab"
                 },
                 "b01": {
+                    "code": "b01",
                     "crn": 11150,
                     "campus": "M",
-                    "credits": 3.00,
+                    "credits": "0.00",
                     "days": "M",
-                    "start": 800,
-                    "end": 1100,
+                    "start": "1300",
+                    "end": "1600",
                     "slots": {
                         "max": 90,
                         "actual": 87
@@ -251,17 +262,18 @@
                     },
                     "instructor": "Daniel J. Rea",
                     "startDate": "09/05",
-                    "endDate": "1207",
+                    "endDate": "12/07",
                     "location": "107 Drake Centre",
                     "details": "Dry/Tutorial Lab"
                 },
                 "b02": {
+                    "code": "b02",
                     "crn": 11150,
                     "campus": "M",
-                    "credits": 3.00,
+                    "credits": "0.00",
                     "days": "W",
-                    "start": 800,
-                    "end": 1100,
+                    "start": "0800",
+                    "end": "1100",
                     "slots": {
                         "max": 90,
                         "actual": 87
@@ -272,17 +284,18 @@
                     },
                     "instructor": "Daniel J. Rea",
                     "startDate": "09/05",
-                    "endDate": "1207",
+                    "endDate": "12/07",
                     "location": "107 Drake Centre",
                     "details": "Dry/Tutorial Lab"
                 },
                 "b03": {
+                    "code": "b03",
                     "crn": 11150,
                     "campus": "M",
-                    "credits": 3.00,
+                    "credits": "0.00",
                     "days": "F",
-                    "start": 800,
-                    "end": 1100,
+                    "start": "0800",
+                    "end": "1100",
                     "slots": {
                         "max": 90,
                         "actual": 87
@@ -293,7 +306,7 @@
                     },
                     "instructor": "Daniel J. Rea",
                     "startDate": "09/05",
-                    "endDate": "1207",
+                    "endDate": "12/07",
                     "location": "107 Drake Centre",
                     "details": "Dry/Tutorial Lab"
                 }
@@ -330,12 +343,13 @@
                     ]
                 },
                 "a01": {
+                    "code": "a01",
                     "crn": 11160,
                     "campus": "M",
-                    "credits": 3.00,
+                    "credits": "3.00",
                     "days": "MWF",
-                    "start": 830,
-                    "end": 920,
+                    "start": "0830",
+                    "end": "0920",
                     "slots": {
                         "max": 90,
                         "actual": 87
@@ -351,12 +365,13 @@
                     "details": "Dry/Tutorial Lab"
                 },
                 "a02": {
+                    "code": "a02",
                     "crn": 11161,
                     "campus": "M",
-                    "credits": 3.00,
+                    "credits": "3.00",
                     "days": "MWF",
-                    "start": 930,
-                    "end": 1020,
+                    "start": "0930",
+                    "end": "1020",
                     "slots": {
                         "max": 90,
                         "actual": 87
@@ -367,7 +382,7 @@
                     },
                     "instructor": "Alexandra McMullen",
                     "startDate": "09/05",
-                    "endDate": "1207",
+                    "endDate": "12/07",
                     "location": "107 Drake Centre",
                     "details": "Dry/Tutorial Lab"
                 }
@@ -388,8 +403,8 @@
                 "prerequisites": {
                     "graded": [
                         {
-                        "code": "comp1010",
-                        "grade": "c"
+                            "code": "comp1010",
+                            "grade": "c"
                         }
                     ]
                 },
@@ -398,12 +413,13 @@
                         "b01",
                         "b02"
                     ],
+                    "code": "a01",
                     "crn": 11150,
                     "campus": "M",
-                    "credits": 3.00,
+                    "credits": "3.00",
                     "days": "MWF",
-                    "start": 830,
-                    "end": 920,
+                    "start": "0830",
+                    "end": "0920",
                     "slots": {
                         "max": 90,
                         "actual": 87
@@ -414,7 +430,7 @@
                     },
                     "instructor": "Daniel J. Rea",
                     "startDate": "09/05",
-                    "endDate": "1207",
+                    "endDate": "12/07",
                     "location": "107 Drake Centre",
                     "details": "Dry/Tutorial Lab"
                 },
@@ -423,12 +439,13 @@
                         "b02",
                         "b03"
                     ],
+                    "code": "a02",
                     "crn": 11150,
                     "campus": "M",
-                    "credits": 3.00,
+                    "credits": "3.00",
                     "days": "MWF",
-                    "start": 930,
-                    "end": 1020,
+                    "start": "0930",
+                    "end": "1020",
                     "slots": {
                         "max": 90,
                         "actual": 87
@@ -439,17 +456,18 @@
                     },
                     "instructor": "Gord Boyer",
                     "startDate": "09/05",
-                    "endDate": "1207",
+                    "endDate": "12/07",
                     "location": "107 Drake Centre",
                     "details": "Dry/Tutorial Lab"
                 },
                 "b01": {
+                    "code": "b01",
                     "crn": 11150,
                     "campus": "M",
-                    "credits": 3.00,
+                    "credits": "0.00",
                     "days": "M",
-                    "start": 800,
-                    "end": 1100,
+                    "start": "0800",
+                    "end": "1100",
                     "slots": {
                         "max": 90,
                         "actual": 87
@@ -460,17 +478,18 @@
                     },
                     "instructor": "Daniel J. Rea",
                     "startDate": "09/05",
-                    "endDate": "1207",
+                    "endDate": "12/07",
                     "location": "107 Drake Centre",
                     "details": "Dry/Tutorial Lab"
                 },
                 "b02": {
+                    "code": "b02",
                     "crn": 11150,
                     "campus": "M",
-                    "credits": 3.00,
+                    "credits": "0.00",
                     "days": "W",
-                    "start": 800,
-                    "end": 1100,
+                    "start": "0800",
+                    "end": "1100",
                     "slots": {
                         "max": 90,
                         "actual": 87
@@ -481,17 +500,18 @@
                     },
                     "instructor": "Daniel J. Rea",
                     "startDate": "09/05",
-                    "endDate": "1207",
+                    "endDate": "12/07",
                     "location": "107 Drake Centre",
                     "details": "Dry/Tutorial Lab"
                 },
                 "b03": {
+                    "code": "b03",
                     "crn": 11150,
                     "campus": "M",
-                    "credits": 3.00,
+                    "credits": "0.00",
                     "days": "F",
-                    "start": 800,
-                    "end": 1100,
+                    "start": "0800",
+                    "end": "1100",
                     "slots": {
                         "max": 90,
                         "actual": 87
@@ -502,7 +522,7 @@
                     },
                     "instructor": "Daniel J. Rea",
                     "startDate": "09/05",
-                    "endDate": "1207",
+                    "endDate": "12/07",
                     "location": "107 Drake Centre",
                     "details": "Dry/Tutorial Lab"
                 }

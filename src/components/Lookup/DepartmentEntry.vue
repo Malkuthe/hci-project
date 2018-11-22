@@ -18,6 +18,7 @@
             <course-entry v-for='course in deptCourses'
                 :key='course.code'
                 :course='course'
+                :dept='dept'
                 :term='term' />
         </div>
     </div>
@@ -68,9 +69,6 @@ export default {
         affix() {
             return this.dept.code + '-' + this.term.code
         }
-    },
-    mounted() {
-        console.log(this.dept)
     }
 }
 </script>
@@ -81,12 +79,6 @@ export default {
         &:first-child {
             .department-header{
                 border-top: 0;
-            }
-        }
-
-        &:last-child {
-            .department-header:not(.active) {
-                margin-bottom: -1px;
             }
         }
 

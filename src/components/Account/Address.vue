@@ -128,7 +128,6 @@ export default {
             this.editAddressMode = true
         },
         clearAddressForm() {
-            console.log('trying to clear form')
             this.line1 = ''
             this.line2 = ''
             this.city = ''

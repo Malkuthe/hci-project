@@ -13,6 +13,7 @@ import {
   faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Multiselect from 'vue-multiselect'
+import Vuebar from 'vuebar'
 
 library.add([
   faUserCircle,
@@ -25,6 +26,7 @@ library.add([
 
 Vue.component('fa-icon', FontAwesomeIcon)
 Vue.component('v-select', Multiselect)
+Vue.use(Vuebar)
 
 Vue.config.productionTip = false
 

@@ -1,0 +1,292 @@
+$row-height: 1fr;
+$col-width: minmax(auto,1fr);
+
+.timetable {
+    display: grid;
+    grid-template-columns: [x-start] $col-width [x-end mon] $col-width [tue] $col-width [wed] $col-width [thu] $col-width [fri] $col-width [sat] $col-width [sun] $col-width [week-end];
+    grid-template-rows: auto 500px;
+
+    & > div {
+        height: 100%;
+        width: 100%;
+    }
+
+    .labels-x {
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        border: 1px solid $dark-grey;
+        border-bottom: 0;
+        background-color: rgba($grey,0.15);
+        box-sizing: border-box;
+        grid-column: mon / week-end;
+        grid-row: 1 / 2;
+        display: grid;
+        grid-template-columns: [mon] $col-width [tue] $col-width [wed] $col-width [thu] $col-width [fri] $col-width [sat] $col-width [sun] $col-width [week-end];
+        grid-template-rows: auto;
+        // margin-right: -0.5px;
+    }
+
+    .table-scroller {
+        grid-column: x-start / week-end;
+        grid-row: 2 / -1;
+        display: grid;
+        border-top-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+        border: solid 1px $dark-grey;
+        box-sizing: border-box;
+        background: $pale-grey;
+
+        grid-template-columns: [x-start] $col-width [x-end mon] $col-width [tue] $col-width [wed] $col-width [thu] $col-width [fri] $col-width [sat] $col-width [sun] $col-width [week-end];
+        grid-template-rows: auto;
+
+        & > div {
+            max-height: 500px;
+            grid-column: 1 / -1;
+            grid-row: 1 / -1
+        }
+    }
+
+    .table-container {
+        grid-column: x-start / week-end;
+        grid-row: time-0720 / day-end;
+        border-top-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+        display: grid !important;
+        grid-template-columns: [x-start] $col-width [x-end mon] $col-width [tue] $col-width [wed] $col-width [thu] $col-width [fri] $col-width [sat] $col-width [sun] $col-width [week-end];
+        grid-template-rows:
+        [time-0720] $row-height
+        [time-0730] $row-height
+        [time-0740] $row-height
+        [time-0750] $row-height
+        [time-0800] $row-height
+        [time-0810] $row-height
+        [time-0820] $row-height
+        [time-0830] $row-height
+        [time-0840] $row-height
+        [time-0850] $row-height
+        [time-0900] $row-height
+        [time-0910] $row-height
+        [time-0920] $row-height
+        [time-0930] $row-height
+        [time-0940] $row-height
+        [time-0950] $row-height
+        [time-1000] $row-height
+        [time-1010] $row-height
+        [time-1020] $row-height
+        [time-1030] $row-height
+        [time-1040] $row-height
+        [time-1050] $row-height
+        [time-1100] $row-height
+        [time-1110] $row-height
+        [time-1120] $row-height
+        [time-1130] $row-height
+        [time-1140] $row-height
+        [time-1150] $row-height
+        [time-1200] $row-height
+        [time-1210] $row-height
+        [time-1220] $row-height
+        [time-1230] $row-height
+        [time-1240] $row-height
+        [time-1250] $row-height
+        [time-1300] $row-height
+        [time-1310] $row-height
+        [time-1320] $row-height
+        [time-1330] $row-height
+        [time-1340] $row-height
+        [time-1350] $row-height
+        [time-1400] $row-height
+        [time-1410] $row-height
+        [time-1420] $row-height
+        [time-1430] $row-height
+        [time-1440] $row-height
+        [time-1450] $row-height
+        [time-1500] $row-height
+        [time-1510] $row-height
+        [time-1520] $row-height
+        [time-1530] $row-height
+        [time-1540] $row-height
+        [time-1550] $row-height
+        [time-1600] $row-height
+        [time-1610] $row-height
+        [time-1620] $row-height
+        [time-1630] $row-height
+        [time-1640] $row-height
+        [time-1650] $row-height
+        [time-1700] $row-height
+        [time-1710] $row-height
+        [time-1720] $row-height
+        [time-1730] $row-height
+        [time-1740] $row-height
+        [time-1750] $row-height
+        [time-1800] $row-height
+        [time-1810] $row-height
+        [time-1820] $row-height
+        [time-1830] $row-height
+        [time-1840] $row-height
+        [time-1850] $row-height
+        [time-1900] $row-height
+        [time-1910] $row-height
+        [time-1920] $row-height 
+        [time-1930] $row-height [day-end];
+
+        .labels-y {
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+            border-right: 1px solid $dark-grey;
+            background-color: rgba($grey,0.15);
+            box-sizing: border-box;
+            grid-column: x-start / x-end;
+            grid-row: time-0720 / day-end;
+            display: grid;
+            // height: calc(100% + 1px);
+            margin-top: -0.5px;
+            grid-template-rows:
+            [time-0720] $row-height
+            [time-0730] $row-height
+            [time-0740] $row-height
+            [time-0750] $row-height
+            [time-0800] $row-height
+            [time-0810] $row-height
+            [time-0820] $row-height
+            [time-0830] $row-height
+            [time-0840] $row-height
+            [time-0850] $row-height
+            [time-0900] $row-height
+            [time-0910] $row-height
+            [time-0920] $row-height
+            [time-0930] $row-height
+            [time-0940] $row-height
+            [time-0950] $row-height
+            [time-1000] $row-height
+            [time-1010] $row-height
+            [time-1020] $row-height
+            [time-1030] $row-height
+            [time-1040] $row-height
+            [time-1050] $row-height
+            [time-1100] $row-height
+            [time-1110] $row-height
+            [time-1120] $row-height
+            [time-1130] $row-height
+            [time-1140] $row-height
+            [time-1150] $row-height
+            [time-1200] $row-height
+            [time-1210] $row-height
+            [time-1220] $row-height
+            [time-1230] $row-height
+            [time-1240] $row-height
+            [time-1250] $row-height
+            [time-1300] $row-height
+            [time-1310] $row-height
+            [time-1320] $row-height
+            [time-1330] $row-height
+            [time-1340] $row-height
+            [time-1350] $row-height
+            [time-1400] $row-height
+            [time-1410] $row-height
+            [time-1420] $row-height
+            [time-1430] $row-height
+            [time-1440] $row-height
+            [time-1450] $row-height
+            [time-1500] $row-height
+            [time-1510] $row-height
+            [time-1520] $row-height
+            [time-1530] $row-height
+            [time-1540] $row-height
+            [time-1550] $row-height
+            [time-1600] $row-height
+            [time-1610] $row-height
+            [time-1620] $row-height
+            [time-1630] $row-height
+            [time-1640] $row-height
+            [time-1650] $row-height
+            [time-1700] $row-height
+            [time-1710] $row-height
+            [time-1720] $row-height
+            [time-1730] $row-height
+            [time-1740] $row-height
+            [time-1750] $row-height
+            [time-1800] $row-height
+            [time-1810] $row-height
+            [time-1820] $row-height
+            [time-1830] $row-height
+            [time-1840] $row-height
+            [time-1850] $row-height
+            [time-1900] $row-height
+            [time-1910] $row-height
+            [time-1920] $row-height 
+            [time-1930] $row-height [day-end];
+            grid-template-columns: auto;
+    
+            #am-7 {
+                grid-row: time-0720 / time-0800;
+            }
+    
+            #am-8 {
+                grid-row: time-0800 / time-0900;
+            }
+    
+            #am-9 {
+                grid-row: time-0900 / time-1000;
+            }
+    
+            #am-10 {
+                grid-row: time-1000 / time-1100;
+            }
+    
+            #am-11 {
+                grid-row: time-1100 / time-1200;
+            }
+    
+            #pm-12 {
+                grid-row: time-1200 / time-1300;
+            }
+    
+            #pm-1 {
+                grid-row: time-1300 / time-1400;
+            }
+    
+            #pm-2 {
+                grid-row: time-1400 / time-1500;
+            }
+    
+            #pm-3 {
+                grid-row: time-1500 / time-1600;
+            }
+    
+            #pm-4 {
+                grid-row: time-1600 / time-1700;
+            }
+    
+            #pm-5 {
+                grid-row: time-1700 / time-1800;
+            }
+    
+            #pm-6 {
+                grid-row: time-1800 / time-1900;
+            }
+    
+            #pm-7 {
+                grid-row: time-1900 / day-end;
+            }
+    
+            & > div {
+                min-height: 50px;
+                border-bottom: 1px solid $grey;
+                &:last-child {
+                    border-bottom: 0;
+                }
+            }
+        }
+    }
+
+    .labels-x, .labels-y {
+        & > div {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+    }
+}

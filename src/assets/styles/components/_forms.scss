@@ -41,58 +41,6 @@ form {
         }
     }
 
-    button {
-        all: unset;
-        height: 40px;
-        min-width: 40px;
-        width: fit-content;
-        border-radius: 3px;
-        font-size: 80%;
-        padding: 0px 10px;
-        transition: background-color 0.33s;
-        box-shadow: 
-            0 2px 2px 0 rgba(0,0,0,0.14), 
-            0 3px 1px -2px rgba(0,0,0,0.12), 
-            0 1px 5px 0 rgba(0,0,0,0.2);
-        background: $blue;
-        color: $pale-blue;
-        text-align: center;
-
-        &:hover {
-            background: $light-blue;
-        }
-
-        &:active {
-            background: $dark-blue;
-        }
-
-        &.clear {
-            background-color: $blue-grey;
-            color: $very-dark-grey;
-
-            &:hover {
-                background-color: $light-blue-grey;
-            }
-
-            &:active {
-                color: $pale-grey;
-                background-color: $dark-blue-grey;
-            }
-        }
-
-        &.cancel {
-            background-color: $red;
-
-            &:hover {
-                background-color: $light-red;
-            }
-
-            &:active {
-                background-color: $dark-red;
-            }
-        }
-    }
-
     & > div {
         margin-top: 1.2em;
 
@@ -118,4 +66,70 @@ form {
 
     }
 
+}
+
+button {
+    all: unset;
+    height: 40px;
+    min-width: 40px;
+    width: fit-content;
+    border-radius: 3px;
+    font-size: 80%;
+    padding: 0px 10px;
+    transition: background-color 0.33s;
+    box-shadow: 
+        0 2px 2px 0 rgba(0,0,0,0.14), 
+        0 3px 1px -2px rgba(0,0,0,0.12), 
+        0 1px 5px 0 rgba(0,0,0,0.2);
+    background: $blue;
+    color: $pale-blue;
+    text-align: center;
+
+    &:hover {
+        background: $light-blue;
+    }
+
+    &:active {
+        background: $dark-blue;
+    }
+
+    &.clear {
+        background-color: $blue-grey;
+        color: $very-dark-grey;
+
+        &:hover {
+            background-color: $light-blue-grey;
+        }
+
+        &:active {
+            color: $pale-grey;
+            background-color: $dark-blue-grey;
+        }
+    }
+
+    &.cancel, &.red {
+        background-color: $red;
+
+        &:hover {
+            background-color: $light-red;
+        }
+
+        &:active {
+            background-color: $dark-red;
+        }
+    }
+
+    &.disabled {
+        background-color: $light-blue-grey;
+        box-shadow: unset;
+        color: $very-dark-grey;
+
+        &:hover {
+            background-color: $light-blue-grey;
+        }
+
+        &:active {
+            background-color: $light-blue-grey;
+        }
+    }
 }

@@ -95,7 +95,6 @@ export default {
             this.editPassMode = false
         },
         handleSubmitPass() {
-            console.log("Handling Password Submission")
             if (this.currentPass != this.mockUser.password) {
                 this.errCurrent = true;
             }

@@ -1,5 +1,5 @@
 <template>
-    <div v-if='prereq != null' class='prerequisite-graded prerequisite' :id='prereq'>
+    <div v-if='prereq != null' class='prerequisite-notheld prerequisite' :id='prereq'>
         <span class='code'><b>{{ code }}</b></span>
         <span v-if='met' class='met'><fa-icon icon='check-circle' /></span>
         <span v-if='!met' class='unmet'><fa-icon icon='times-circle' /></span>
@@ -10,10 +10,10 @@
 import { mapGetters, mapState } from 'vuex'
 
 export default {
-    name: 'prerequisite-graded',
+    name: 'prerequisite-notheld',
     props: {
         prereq: {
-            type: Object,
+            type: String,
             required: true
         }
     },
@@ -25,23 +25,19 @@ export default {
             'mockUser'
         ]),
         course() {
-            return this.findCourse(this.prereq.code)
+            return this.findCourse(this.prereq)
         },
         coursesHeld() {
             return this.mockUser.coursesHeld
         },
         code() {
-            var split = this.prereq.code.match(/[a-zA-z]+|[0-9]+/gi)
+            var split = this.prereq.match(/[a-zA-z]+|[0-9]+/gi)
             split[0] = split[0].toUpperCase();
             split[1] = split[1].toUpperCase();
-            return split[0] + " " + split[1] + " (" + this.prereq.grade.toUpperCase() + ")";
+            return split[0] + " " + split[1];
         },
         met() {
-            if (this.mockUser.coursesHeld.hasOwnProperty(this.prereq.code)) {
-                if(this.mockUser.coursesHeld[this.prereq.code].grade.toLowerCase() <= this.prereq.grade) {
-                    return true
-                }
-            }
+            if (!this.mockUser.coursesHeld.hasOwnProperty(this.prereq)) return true
             return false
         }
     }

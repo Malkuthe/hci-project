@@ -1,12 +1,18 @@
 <template>
     <div class='course-entry' 
-         :id="'course-entry--' + affix">
+         :id="'course-entry--' + affix"
+         :class="{ 'active': show }">
         <span class='course-name' :id="'course-name--' + affix">{{ course.name }}</span>
         <span class='course-code' :id="'course-code--' + affix">({{ code }})</span>
         <div v-if='err' class='error'>
             <div class='prereq-error' v-if='!prereqsMet'>
                 <span class='warning'><fa-icon icon='exclamation-triangle' /></span> Prerequisites not met!
             </div>
+            <div class='registration-error' v-if='!notAlreadyRegistered'>
+                <span class='warning'><fa-icon icon='exclamation-triangle' />
+                    You are already registered to this course!</span>
+            </div>
+            <div class='waitlisted-error' v-if='!notAlreadyWaitlisted'><span class='warning'><fa-icon icon='exclamation-triangle' /> You are already waitlisted for this course!</span></div>
         </div>
         <p> {{ course.description }} </p>
         <h4 v-if='hasPrereqs'>Prerequisites:</h4>
@@ -18,7 +24,33 @@
             <prereqs-graded
                 v-for='gradedPrereq in gradedPrereqs'
                 :prereq='gradedPrereq'
-                :key='gradedPrereq' />
+                :key='gradedPrereq.code' />
+        </div>
+        <h4 v-if='hasNotHeldPrereqs'>Not to be held with:</h4>
+        <div v-if='hasNotHeldPrereqs' class='prerequisites-container'>
+            <prereqs-not-held
+                v-for='notHeldPrereq in notHeldPrereqs'
+                :prereq='notHeldPrereq'
+                :key='notHeldPrereq' />
+        </div>
+        <div class='sections-container'>
+            <div class='sections-header' @click='show = !show'>
+                Sections
+                <div class='chevron'>
+                    <fa-icon
+                        :icon="show ? 'chevron-circle-down' : 'chevron-circle-left'" />
+                </div>
+            </div>
+            <div v-if='show'>
+                <lecture-entry 
+                    v-for='section in lectures'
+                    :key='section.code'
+                    :term='term'
+                    :dept='dept'
+                    :course='course'
+                    :section='section'
+                    :can-register='!err' />
+            </div>
         </div>
     </div>
 </template>
@@ -27,12 +59,16 @@
 import { mapState } from 'vuex'
 import PrereqsHeld from '@/components/Lookup/Prerequisites/Held.vue'
 import PrereqsGraded from '@/components/Lookup/Prerequisites/Graded.vue'
+import PrereqsNotHeld from '@/components/Lookup/Prerequisites/NotHeld.vue'
+import LectureEntry from '@/components/Lookup/LectureEntry.vue'
 
 export default {
     name: 'course-entry',
     components: {
         prereqsHeld: PrereqsHeld,
-        prereqsGraded: PrereqsGraded
+        prereqsGraded: PrereqsGraded,
+        prereqsNotHeld: PrereqsNotHeld,
+        lectureEntry: LectureEntry
     },
     props: {
         term: {
@@ -43,13 +79,19 @@ export default {
             type: Object,
             required: true
         },
+        dept: {
+            type: Object,
+            required: true
+        },
         folded: {
             type: Boolean,
-            default: false
+            default: true
         }
     },
-    mounted() {
-        console.log(this.gradedPrereqs);
+    data() {
+        return {
+            show: !this.folded
+        }
     },
     computed: {
         ...mapState([
@@ -65,8 +107,18 @@ export default {
         affix() {
             return this.course.code + '-' + this.term.code
         },
+        lectures() {
+            if (!this.course.sections) return null
+            var sections = []
+
+            for (var i = 0; i < this.course.sections.length; i++) {
+                sections.push(this.course[this.course.sections[i]]);
+            }
+
+            return sections
+        },
         err() {
-            return !(this.prereqsMet && this.noTimeConflicts && this.notAlreadyRegistered)
+            return !(this.prereqsMet && this.noTimeConflicts && this.notAlreadyRegistered && this.notAlreadyWaitlisted)
         },
         hasPrereqs() {
             if (this.course.prerequisites) return true
@@ -92,6 +144,16 @@ export default {
             if (!this.hasGradedPrereqs) return null
             return this.course.prerequisites.graded
         },
+        hasNotHeldPrereqs() {
+            if (!this.hasPrereqs) return false
+            if (this.course.prerequisites.notheld) return true
+            return false
+        },
+        notHeldPrereqs() {
+            if (!this.hasPrereqs) return null
+            if (!this.hasNotHeldPrereqs) return null
+            return this.course.prerequisites.notheld
+        },
         prereqsMet() {
             if (!this.course.prerequisites) return true
             if (Object.keys(this.course.prerequisites).length === 0) return true
@@ -112,7 +174,7 @@ export default {
             }
 
             if(this.course.prerequisites.notheld) {
-                var notHeldPrereqs = this.course.prerequisites.notHeld
+                var notHeldPrereqs = this.course.prerequisites.notheld
                 for (i = 0; i < notHeldPrereqs.length; i++) {
                     var notHeldPrereq = notHeldPrereqs[i]
                     if (coursesHeld.hasOwnProperty(notHeldPrereq)) {
@@ -128,9 +190,7 @@ export default {
                     var gradedPrereq = gradedPrereqs[i]
                     var code = gradedPrereq.code
                     var grade = gradedPrereq.grade
-                    console.log(code);
                     if (coursesHeld.hasOwnProperty(code)) {
-                        console.log(coursesHeld.hasOwnProperty(code))
                         if(coursesHeld[code].grade.toLowerCase() > grade) {
                             meetsGraded = false;
                             break;
@@ -148,6 +208,19 @@ export default {
             return true
         },
         notAlreadyRegistered() {
+            if(!this.mockUser.registeredCourses) return true
+            if(Object.keys(this.mockUser.registeredCourses).length === 0) return true
+            if(!this.mockUser.registeredCourses[this.term.code]) return true
+            if(!this.mockUser.registeredCourses[this.term.code][this.dept.code]) return true
+            if(this.mockUser.registeredCourses[this.term.code][this.dept.code].hasOwnProperty(this.course.code)) return false
+            return true
+        },
+        notAlreadyWaitlisted() {
+            if(!this.mockUser.waitlistedCourses) return true
+            if(Object.keys(this.mockUser.waitlistedCourses).length === 0) return true
+            if(!this.mockUser.waitlistedCourses[this.term.code]) return true
+            if(!this.mockUser.waitlistedCourses[this.term.code][this.dept.code]) return true
+            if(this.mockUser.waitlistedCourses[this.term.code][this.dept.code].hasOwnProperty(this.course.code)) return false
             return true
         }
     }
@@ -156,8 +229,7 @@ export default {
 
 <style lang='scss'>
     .course-entry {
-        min-height: 80px;
-        border-bottom: 1px solid $grey;
+        border-top: 1px solid $grey;
         padding: 20px 10px;
 
         .error {
@@ -171,17 +243,23 @@ export default {
             border: 1px solid $red;
         }
 
-        h4 {
-            margin-top: 0.2em;
+        & > h4 {
+            margin-top: 0.8em;
             margin-bottom: 0.4em;
+
+            &:first-child {
+                margin-top: 0.2em;
+            }
         }
 
-        &:hover {
-            background-color: rgba($grey,0.10);
-        }
+        .clickable {
+            &:hover {
+                background-color: rgba($grey,0.10);
+            }
 
-        &:active {
-            background-color: rgba($grey,0.2);
+            &:active {
+                background-color: rgba($grey,0.2);
+            }
         }
 
         .course-name {
@@ -202,6 +280,47 @@ export default {
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: auto;
             grid-column-gap: 30px;
+            margin-bottom: 0.4em;
+        }
+
+        .sections-container {
+            border-top: 1px solid $grey;
+            margin: 0.4em -10px -20px -10px;
+
+            .sections-header {
+                background: rgba($grey,0.5);
+                font-size: 90%;
+                font-weight: bold;
+                padding-top: 10px;
+                padding-bottom: 0.6em;
+                padding-left: 10px;
+                border-bottom: 1px solid $grey;
+                box-sizing: border-box;
+                border-left: 10px solid rgba($brown,0.4);
+                border-bottom: 1px solid $grey;
+                padding: 10px;
+
+                & > .chevron {
+                    float: right;
+                }
+            }
+        }
+    }
+</style>
+
+<style lang="scss">
+    .buttons-container {
+        text-align: right;
+        margin-top: 10px;
+
+        button {
+            margin-right: 15px;
+            min-width: unset;
+            height: 25px;
+
+            &:last-child {
+                margin-right: 0;
+            }
         }
     }
 </style>
