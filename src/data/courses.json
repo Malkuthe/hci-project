@@ -466,8 +466,8 @@
                     "campus": "M",
                     "credits": "0.00",
                     "days": "M",
-                    "start": "0800",
-                    "end": "1100",
+                    "start": "1100",
+                    "end": "1400",
                     "slots": {
                         "max": 90,
                         "actual": 87
@@ -488,8 +488,8 @@
                     "campus": "M",
                     "credits": "0.00",
                     "days": "W",
-                    "start": "0800",
-                    "end": "1100",
+                    "start": "1100",
+                    "end": "1400",
                     "slots": {
                         "max": 90,
                         "actual": 87
@@ -510,8 +510,8 @@
                     "campus": "M",
                     "credits": "0.00",
                     "days": "F",
-                    "start": "0800",
-                    "end": "1100",
+                    "start": "1100",
+                    "end": "1400",
                     "slots": {
                         "max": 90,
                         "actual": 87

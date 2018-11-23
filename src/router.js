@@ -4,7 +4,6 @@ import Home from '@/views/Home.vue'
 import Login from '@/views/Login.vue'
 import Logout from '@/views/Logout.vue'
 import Account from '@/views/Account.vue'
-import LookupPage from '@/views/LookupClasses.vue'
 import RegistrationCurrent from '@/views/Registration/Current.vue'
 import RegistrationEdit from '@/views/Registration/Edit.vue'
 import RegistrationHistory from '@/views/Registration/History.vue'
@@ -45,20 +44,24 @@ export default new Router({
       }
     },
     {
-      path: '/lookup',
-      name: 'lookup',
-      component: LookupPage,
+      path: '/registration',
+      component: () => import(/* webpackChunkName: "registration" */ './views/Registration.vue'),
       meta: {
         requiresLogin: true
       },
       children: [
         {
           path: '',
-          component: Lookup
+          name: 'registration',
+          component: Lookup,
         },
         {
           path: 'timetable',
-          component: Timetable
+          name: 'timetable',
+          component: Timetable,
+          meta: {
+            requiresLogin: true
+          }
         }
       ]
     },

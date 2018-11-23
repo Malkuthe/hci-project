@@ -1,107 +1,92 @@
 <template>
-  <div class = drop>
+  <div id='registration-history' class='card'>
     <h2>Registration History</h2>
-    <h4 id = courseinfo>Select Term <button id = button type="button">Winter 2016</button></h4>
-    <table id="t01">
-  <tr>
-    <th>Status</th>
-    <th>CRN</th> 
-    <th>Subject</th>
-    <th>Course#</th>
-    <th>Scetion</th>
-    <th>Credit</th>
-    <th>Course Title</th>
-    <th>Level</th>
-  </tr>
-  <tr>
-    <td>Registered Jul 25, 2015</td>
-    <td>50140</td>
-    <td>COMP</td>
-    <td>2140</td>
-    <td>A01</td>
-    <td>3.0</td>
-    <td>Data Structures and Algorithms</td>
-    <td>Undergraduate</td>
-  </tr>
-   <tr>
-    <td>Registered Jul 25, 2015</td>
-    <td>557433</td>
-    <td>DAGR</td>
-    <td>0490</td>
-    <td>K01</td>
-    <td>3.0</td>
-    <td>Applied Farm Management</td>
-    <td>Undergraduate</td>
-  </tr>
-     <tr>
-     <td>Registered Jul 25, 2015</td>
-    <td>557334</td>
-    <td>DAGR</td>
-    <td>0490</td>
-    <td>L01</td>
-    <td>0.0</td>
-    <td>Applied Farm Management</td>
-    <td>Undergraduate</td>
-  </tr>
-  <tr>
-    <td>Registered Jul 25, 2015</td>
-    <td>7598633</td>
-    <td>COMP</td>
-    <td>2150</td>
-    <td>A02</td>
-    <td>3.0</td>
-    <td>Introduction to Computer Systems</td>
-    <td>Undergraduate</td>
-  </tr>
-</table>
+    <div class='disclaimer'><fa-icon icon='exclamation-triangle' />  This page is only a mockup. There is no real interactivity available.  <fa-icon icon='exclamation-triangle' /></div>
+    <form>
+      <div class='field beside'>
+        <label>Select Term:</label>
+        <v-select v-model='term' :options='["Winter 2016"]' :disabled='true'/>
+      </div>
+    </form>
+    <div class='info-table'>
+      <div class='header'>
+        <div class='status'>Status</div>
+        <div>CRN</div>
+        <div>Subject</div>
+        <div>Course #</div>
+        <div>Section</div>
+        <div>Credit</div>
+        <div class='title'>Course Title</div>
+        <div class='level'>Level</div>
+      </div>
+      <div class='table-body'>
+        <div class='row'>
+          <div class='status'>Registered Jul 25, 2015</div>
+          <div>50140</div>
+          <div>COMP</div>
+          <div>2140</div>
+          <div>A01</div>
+          <div>3.0</div>
+          <div class='title'>Data Structures and Algorithms</div>
+          <div class='level'>Undergraduate</div>
+        </div>
+        <div class='row'>
+          <div class='status'>Registered Jul 25, 2015</div>
+          <div>557433</div>
+          <div>DAGR</div>
+          <div>0490</div>
+          <div>K01</div>
+          <div>3.0</div>
+          <div class='title'>Applied Farm Management</div>
+          <div class='level'>Undergraduate</div>
+        </div>
+        <div class='row'>
+          <div class='status'>Registered Jul 25, 2015</div>
+          <div>557334</div>
+          <div>DAGR</div>
+          <div>0490</div>
+          <div>L01</div>
+          <div>0.0</div>
+          <div class='title'>Applied Farm Management</div>
+          <div class='level'>Undergraduate</div>
+        </div>
+        <div class='row'>
+          <div class='status'>Registered Jul 25, 2015</div>
+          <div>7598633</div>
+          <div>COMP</div>
+          <div>2150</div>
+          <div>A02</div>
+          <div>3.0</div>
+          <div class='title'>Introduction to Computer Systems</div>
+          <div class='level'>Undergraduate</div>
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
 export default {
   data(){
     return{
-
+      term: "Winter 2016"
     } 
   },
 }
 </script>
 
 <style lang="scss" scoped>
-#courseinfo{
-  float: left;
-  margin-left: 30px
-};
-#button{
-  margin-left: 10px;
-};
-table {
-    margin-left: 30px;
-    width:100%;
-}
-table,th {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-td {
-    border: 1px solid white;
-    border-collapse: collapse;
-}
-th, td {
-    padding: 5px;
-    text-align: left;
-}
-table tr:nth-child(even) {
-    background-color: #eee;
-}
-table tr:nth-child(odd) {
-   background-color: #fff;
-}
-td:nth-child(1){
-  text-align: center;
-}
-table th {
-    background-color: grey;
-    color: white;
+.info-table {
+  .status {
+    grid-column: 1 / 3;
+  }
+
+  .title {
+    grid-column: 8 / 11; 
+  }
+
+  .level {
+    grid-column: 11 / 13;
+  }
 }
 </style>

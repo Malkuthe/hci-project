@@ -2,20 +2,8 @@
     <div id='lookup-classes-container'>
         <div id='sidebar' class='card'>
             <h2>Courses</h2>
-            <form>
-                <div class='field'>
-                    <label for='term'>Term:</label>
-                    <v-select
-                        name='term'
-                        v-model='term'
-                        id='term'
-                        :options='courses.terms'
-                        :searchable='true'
-                        track-by='name'
-                        label='name' />
-                </div>
-            </form>
-            <div v-if='registeredDepartments.length > 0'>
+            <b>Term: </b>{{ term.name }}
+            <div class='registered' v-if='registeredDepartments.length > 0'>
             <h3>Registered</h3>
                 <list-department 
                     v-for='dept in registeredDepartments'
@@ -24,7 +12,7 @@
                     :dept='dept'
                     status='registered' />
             </div>
-            <div v-if='waitlistedDepartments.length > 0'>
+            <div class='waitlisted' v-if='waitlistedDepartments.length > 0'>
                 <h3>Waitlisted</h3>
                 <list-department 
                     v-for='dept in waitlistedDepartments'
@@ -93,6 +81,35 @@ export default {
 </script>
 
 <style lang="scss">
+    .card {
+        h2 {
+            .link {
+                font-size: 60%;
+                position: relative;
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: none;
+                }
+
+                &:after{
+                    content:' ';
+                    position: absolute;
+                    background-color: $brown;
+                    bottom: -2px;
+                    left: 0;
+                    width: 0;
+                    height: 2px;
+                    transition: 0.33s;
+                }
+
+                &:hover:after {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
     #lookup-classes-container {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
@@ -107,6 +124,14 @@ export default {
         #sidebar {
             grid-column: 1 / 4;
             grid-row: 1 / -1;
+
+            & > .waitlisted {
+                border-top: 1px solid $dark-grey;
+            }
+
+            & > .registered {
+                margin-bottom: 1em;
+            }
         }
 
         #lookup, #timetable {

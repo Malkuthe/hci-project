@@ -29,19 +29,65 @@ const mutations = {
     Vue.set(state.mockUser,data.key,data.data);
   },
   registerLecture(state, data) {
+    for (const term in data) {
+      for (const dept in data[term]) {
+        for (const course in data[term][dept]) {
+          for (const section in data[term][dept][course]) {
+            var sec = state.courses[term][dept][course][section]
+
+            sec.slots.actual += 1;
+          }
+        }
+      }
+    }
     stateMerge(state.mockUser.registeredCourses,data);
   },
   registerLab(state,data) {
+    for (const term in data) {
+      for (const dept in data[term]) {
+        for (const course in data[term][dept]) {
+          for (const section in data[term][dept][course]) {
+            var sec = state.courses[term][dept][course][section]
+
+            sec.slots.actual += 1;
+          }
+        }
+      }
+    }
     stateMerge(state.mockUser.registeredCourses,data);
   },
   waitlistLecture(state, data) {
+    for (const term in data) {
+      for (const dept in data[term]) {
+        for (const course in data[term][dept]) {
+          for (const section in data[term][dept][course]) {
+            var sec = state.courses[term][dept][course][section]
+
+            sec.waitlist.actual += 1;
+          }
+        }
+      }
+    }
     stateMerge(state.mockUser.waitlistedCourses,data);
   },
   waitlistLab(state,data) {
+    for (const term in data) {
+      for (const dept in data[term]) {
+        for (const course in data[term][dept]) {
+          for (const section in data[term][dept][course]) {
+            var sec = state.courses[term][dept][course][section]
+
+            sec.waitlist.actual += 1;
+          }
+        }
+      }
+    }
     stateMerge(state.mockUser.waitlistedCourses,data);
   },
   dropRegisteredLecture(state,data) {
     Vue.delete(state.mockUser.registeredCourses[data.term][data.dept][data.course],data.section)
+
+    state.courses[data.term][data.dept][data.course][data.section].slots.actual -= 1
     if(isEmpty(state.mockUser.registeredCourses[data.term][data.dept][data.course])) {
       Vue.delete(state.mockUser.registeredCourses[data.term][data.dept],data.course)
     }
@@ -55,6 +101,9 @@ const mutations = {
   dropRegisteredLab(state,data) {
     Vue.delete(state.mockUser.registeredCourses[data.term][data.dept][data.course],data.lab)
     Vue.delete(state.mockUser.registeredCourses[data.term][data.dept][data.course],data.lecture)
+
+    state.courses[data.term][data.dept][data.course][data.lab].slots.actual -= 1
+    state.courses[data.term][data.dept][data.course][data.lecture].slots.actual -= 1
     if(isEmpty(state.mockUser.registeredCourses[data.term][data.dept][data.course])) {
       Vue.delete(state.mockUser.registeredCourses[data.term][data.dept],data.course)
     }
@@ -67,6 +116,9 @@ const mutations = {
   },
   dropWaitlistedLecture(state,data) {
     Vue.delete(state.mockUser.waitlistedCourses[data.term][data.dept][data.course],data.section)
+
+    state.courses[data.term][data.dept][data.course][data.section].waitlist.actual -= 1
+
     if(isEmpty(state.mockUser.waitlistedCourses[data.term][data.dept][data.course])) {
       Vue.delete(state.mockUser.waitlistedCourses[data.term][data.dept],data.course)
     }
@@ -80,6 +132,10 @@ const mutations = {
   dropWaitlistedLab(state,data) {
     Vue.delete(state.mockUser.waitlistedCourses[data.term][data.dept][data.course],data.lab)
     Vue.delete(state.mockUser.waitlistedCourses[data.term][data.dept][data.course],data.lecture)
+
+    state.courses[data.term][data.dept][data.course][data.lab].waitlist.actual -= 1
+    state.courses[data.term][data.dept][data.course][data.lecture].waitlist.actual -= 1
+
     if(isEmpty(state.mockUser.waitlistedCourses[data.term][data.dept][data.course])) {
       Vue.delete(state.mockUser.waitlistedCourses[data.term][data.dept],data.course)
     }

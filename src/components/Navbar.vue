@@ -8,7 +8,7 @@
         <div id="nav__links">
             <ul>
                 <li><router-link v-if='loggedIn' to='/'>Home</router-link></li>
-                <li><router-link v-if='loggedIn' to='/lookup'>Lookup Courses</router-link></li>
+                <li><router-link v-if='loggedIn' to='/registration'>Registration</router-link></li>
                 <li><router-link v-if='loggedIn' to='/account'>My Account</router-link></li>
                 <li v-if="loggedIn"><a to='/logout' v-on:click="doLogout" href="javascript:void(0)">Log Out</a></li>
             </ul>
@@ -42,26 +42,36 @@ export default {
 
 <style lang="scss" scoped>
     #nav {
-        height: 20px;
         background-color: $gold;
         border-bottom: 5px solid $brown;
+        box-sizing: border-box;
+        display: grid;
+        grid: auto;
+        align-items: center;
+        padding: 0;
 
         #branding, #nav__links {
-            height: 100%;
-            display: flex;
-            align-items: center;
+            grid-row: 1 / -1;
         }
 
         #branding {
+            font-size: 3em;
+            font-family: 'Lora', 'Helvetica', serif;
+            text-align: left;
+            padding-left: 30px;
             float: left;
-            font-size: 3em; 
         }
 
         #nav__links {
-            float: right;
-            
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+
             ul {
                 list-style: none;
+                margin-top: none;
+                margin-bottom: none;
+                padding-left: none;
 
                 li {
                     float: left;

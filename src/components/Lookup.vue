@@ -1,18 +1,20 @@
 <template>
     <div id='lookup' class='card'>
-        <h2>Lookup</h2><router-link to='/lookup/timetable'>Go to Timetable</router-link>
+        <h2>Registration <router-link class='link' to='/registration/timetable'>Go to Timetable <fa-icon icon='arrow-right' /></router-link></h2>
         <div id='lookup-table'>
             <div id='lookup-table-header'>
                 <form id='lookup-form'
                     @submit.prevent='handleSubmitLookup'>
                     <div id='term-container' class='field'>
-                        <label for='term'>Term:</label>
+                        <label for='lookup-term'>Term:</label>
                         <v-select
-                            name='term'
+                            name='lookup-term'
                             v-model='term'
-                            id='term'
+                            id='lookup-term'
                             :options='courses.terms'
                             :searchable='true'
+                            :allow-empty='false'
+                            :hide-selected='true'
                             track-by='name'
                             label='name' />
                     </div>
@@ -25,16 +27,10 @@
                             :options='courses.departments'
                             :multiple='true'
                             :close-on-select='false'
+                            :hide-selected='true'
                             @input='sortDepartments'
                             track-by='name'
                             label='name' />
-                    </div>
-                    <div id='buttons-container'>
-                        <button
-                            name='submit'
-                            class='submit'
-                            type='submit'
-                            form='lookup-form' >Search</button>
                     </div>
                 </form>
             </div>
@@ -126,7 +122,7 @@ export default {
 
             #lookup-form {
                 display: grid;
-                grid-template-columns: repeat(11, 1fr);
+                grid-template-columns: repeat(10, 1fr);
                 grid-template-rows: auto;
                 grid-column-gap: 30px;
 
@@ -140,15 +136,8 @@ export default {
                 }
 
                 #department-container {
-                    grid-column: 6 / 11;
+                    grid-column: 6 / -1;
                     grid-row: 1 / -1;
-                }
-
-                #buttons-container {
-                    grid-column: 11 / -1;
-                    grid-row: 1 / -1;
-                    align-self: end;
-                    justify-self: end;
                 }
             }
         }

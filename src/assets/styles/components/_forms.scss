@@ -49,6 +49,7 @@ form {
         }
         
         &.field {
+            text-align: left;
 
             label {
                 display: block;
@@ -62,6 +63,27 @@ form {
             
             }
 
+            &.beside {
+                display: grid;
+                grid-gap: 15px;
+                grid-template-columns: max-content repeat(11, 1fr);
+                grid-template-rows: auto;
+
+                label {
+                    grid-column: 1 / 2;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: bold;
+                    font-size: 100%;
+                    margin-bottom: 0;
+                }
+
+                .multiselect, .text-input {
+                    grid-column: 2 / 5;
+                }
+            }
+
         }
 
     }
@@ -70,13 +92,14 @@ form {
 
 button {
     all: unset;
+    cursor: pointer;
     height: 40px;
     min-width: 40px;
     width: fit-content;
     border-radius: 3px;
     font-size: 80%;
     padding: 0px 10px;
-    transition: background-color 0.33s;
+    transition: 0.33s;
     box-shadow: 
         0 2px 2px 0 rgba(0,0,0,0.14), 
         0 3px 1px -2px rgba(0,0,0,0.12), 
@@ -91,6 +114,7 @@ button {
 
     &:active {
         background: $dark-blue;
+        box-shadow: unset;
     }
 
     &.clear {
@@ -131,5 +155,55 @@ button {
         &:active {
             background-color: $light-blue-grey;
         }
+    }
+}
+
+.multiselect {
+    
+    .multiselect__tags {
+        border: 1px solid $dark-grey;
+
+        .multiselect__tag {
+            background: $gold;
+            color: $very-dark-grey;
+
+            .multiselect__tag-icon {
+                &:hover {
+                    background: darken($gold,20);
+                }
+
+                &:after {
+                    color: $very-dark-grey;
+                }
+
+                &:hover:after {
+                    color: $pale-grey;
+                }
+            }
+        }
+    }
+
+    .multiselect__option--highlight {
+        background: $gold;
+        color: $very-dark-grey;
+
+        &:after {
+            background: $gold;
+            color: $very-dark-grey;
+        }
+
+        &.multiselect__option--selected {
+            background: $bright-red;
+            color: $very-dark-grey;
+
+            &:after {
+                background: $bright-red;
+            }
+        }
+
+    }
+
+    .multiselect__content-wrapper {
+        border: 1px solid $dark-grey;
     }
 }

@@ -2,7 +2,7 @@
     <div id="address">
         <div class="section-header">
             <span id="address-header"><b>Address</b></span>
-            <span class="edit" v-if="!editAddressMode">
+            <span class="edit" v-if="!editAddressMode"> 
                 <small><a href="javascript:void(0);" v-on:click="editAddress">
                     [<fa-icon icon="edit" />Edit]
                 </a></small>

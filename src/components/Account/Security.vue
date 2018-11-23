@@ -15,6 +15,7 @@
                         name='current-pass'
                         v-model='currentPass'
                         id='current-pass'
+                        class='text-input'
                         type='password'
                         placeholder='Current Password' />
                 </div>
@@ -24,6 +25,7 @@
                         name='new-pass'
                         v-model='newPass'
                         id='new-pass'
+                        class='text-input'
                         type='password'
                         placeholder='New Password' />
                 </div>
@@ -32,6 +34,7 @@
                     <input
                         name='confirm-pass'
                         v-model='confirmPass'
+                        class='text-input'
                         id='confirm-pass'
                         type='password'
                         placeholder='Confirm Password' />

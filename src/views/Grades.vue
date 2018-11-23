@@ -1,107 +1,92 @@
 <template>
-  <div class = drop>
+  <div id='grades' class='card'>
     <h2>Final Grades</h2>
-    <h4 id = courseinfo>Select Term <button id = button type="button">Winter 2015</button></h4>
-    <table id="t01">
-  <tr>
-    <th>Status</th>
-    <th>CRN</th> 
-    <th>Subject</th>
-    <th>Course#</th>
-    <th>Scetion</th>
-    <th>Credit</th>
-    <th>Final Grade</th>
-    <th>Level</th>
-  </tr>
-  <tr>
-    <td>Grade received Apr 24, 2015</td>
-    <td>50140</td>
-    <td>COMP</td>
-    <td>2140</td>
-    <td>A01</td>
-    <td>3.0</td>
-    <td>A</td>
-    <td>Undergraduate</td>
-  </tr>
-   <tr>
-    <td>Grade received Apr 28, 2015</td>
-    <td>557433</td>
-    <td>DAGR</td>
-    <td>0490</td>
-    <td>K01</td>
-    <td>3.0</td>
-    <td>B</td>
-    <td>Undergraduate</td>
-  </tr>
-    
-  <tr>
-    <td>Grade received May 04, 2015</td>
-    <td>7598633</td>
-    <td>COMP</td>
-    <td>2150</td>
-    <td>A02</td>
-    <td>3.0</td>
-    <td>A</td>
-    <td>Undergraduate</td>
-    <tr>
-    <td>Grade NOT received</td>
-    <td>28431</td>
-    <td>COMP</td>
-    <td>2190</td>
-    <td>A03</td>
-    <td>3.0</td>
-    <td></td>
-    <td>Undergraduate</td>
-  </tr>
-</table>
+    <div class='disclaimer'><fa-icon icon='exclamation-triangle' />  This page is only a mockup. There is no real interactivity available.  <fa-icon icon='exclamation-triangle' /></div>
+    <form>
+      <div class='field beside'>
+        <label>Select Term:</label>
+        <v-select v-model='term' :options='["Winter 2015"]' :disabled='true'/>
+      </div>
+    </form>
+    <div class='info-table'>
+      <div class='header'>
+        <div>Status</div>
+        <div>CRN</div> 
+        <div>Subject</div>
+        <div>Course#</div>
+        <div>Scetion</div>
+        <div>Credit</div>
+        <div>Final Grade</div>
+        <div>Level</div>
+      </div>
+      <div class='table-body'>
+        <div class='row'>
+          <div>Grade received Apr 24, 2015</div>
+          <div>50140</div>
+          <div>COMP</div>
+          <div>2140</div>
+          <div>A01</div>
+          <div>3.0</div>
+          <div>A</div>
+          <div>Undergraduate</div>
+        </div>
+        <div class='row'>
+          <div>Grade received Apr 28, 2015</div>
+          <div>557433</div>
+          <div>DAGR</div>
+          <div>0490</div>
+          <div>K01</div>
+          <div>3.0</div>
+          <div>B</div>
+          <div>Undergraduate</div>
+        </div>
+        <div class='row'>
+          <div>Grade received May 04, 2015</div>
+          <div>7598633</div>
+          <div>COMP</div>
+          <div>2150</div>
+          <div>A02</div>
+          <div>3.0</div>
+          <div>A</div>
+          <div>Undergraduate</div>
+        </div>
+        <div class='row'>
+          <div>Grade NOT received</div>
+          <div>28431</div>
+          <div>COMP</div>
+          <div>2190</div>
+          <div>A03</div>
+          <div>3.0</div>
+          <div>—</div>
+          <div>Undergraduate</div>
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
 export default {
   data(){
     return{
-
+      term: 'Winter 2015'
     } 
   },
 }
 </script>
 
 <style lang="scss" scoped>
-#courseinfo{
-  float: left;
-  margin-left: 30px
-};
-#button{
-  margin-left: 10px;
-};
-table {
-    margin-left: 30px;
-    width:100%;
-}
-table,th {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-td {
-    border: 1px solid white;
-    border-collapse: collapse;
-}
-th, td {
-    padding: 11px;
-    text-align: left;
-}
-table tr:nth-child(even) {
-    background-color: #eee;
-}
-table tr:nth-child(odd) {
-   background-color: #fff;
-}
-td:nth-child(1){
-  text-align: center;
-}
-table th {
-    background-color: grey;
-    color: white;
+.info-table {
+  .header, .table-body .row {
+    & > div {
+      &:first-child {
+        grid-column: 1 / 4;
+      }
+
+      &:last-child {
+        grid-column: 10 / 13;
+      }
+    }
+  }
 }
 </style>

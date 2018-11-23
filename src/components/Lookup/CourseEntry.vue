@@ -37,7 +37,7 @@
             <div class='sections-header' @click='show = !show'>
                 Sections
                 <div class='chevron'>
-                    <fa-icon
+                    <span class='text'>[click here to toggle]</span> <fa-icon
                         :icon="show ? 'chevron-circle-down' : 'chevron-circle-left'" />
                 </div>
             </div>
@@ -290,6 +290,7 @@ export default {
             .sections-header {
                 background: rgba($grey,0.5);
                 font-size: 90%;
+                cursor: pointer;
                 font-weight: bold;
                 padding-top: 10px;
                 padding-bottom: 0.6em;
@@ -302,6 +303,12 @@ export default {
 
                 & > .chevron {
                     float: right;
+
+                    .text {
+                        font-weight: normal;
+                        font-size: 80%;
+                        margin-right: 10px;
+                    }
                 }
             }
         }

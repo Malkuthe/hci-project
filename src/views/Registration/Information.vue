@@ -1,44 +1,38 @@
 <template>
-  <div class = drop>
+  <div id='registration-time-and-status' class='card'>
     <h2>Registration Time and Status</h2>
-    <h4 id = courseinfo>You may register during the following times</h4>
-    <table class="t01">
-  <tr>
-    <th>From</th>
-    <th>Begin Time</th> 
-    <th>To</th>
-    <th>End Time </th>
-  </tr>
-  <tr>
-    <td>Jul 25, 2018</td>
-    <td>09:00 am</td>
-    <td>May 08, 2019</td>
-    <td>11:59 pm</td>
-    </tr>
-</table>
- <h4 id = course>&#10004; You have no Holds which prevent registration!</h4>
-  <h4 id = course>&#10004; Your Academic Standing permits registration!</h4>
-   <h4 id = course>&#10004; Your Sudent Status permits registration!</h4>
-    <h3 id = courseinfo>Student Information</h3>
-<table class = "t02">
- <tr>
-    <th>Program: </th>
-    <td>Science-BSc Major</td>
-    </tr>
-    <tr>
-    <th>Faculty: </th>
-    <td>Faculty of Science</td>
-    </tr>
-    <tr>
-    <th>Major: </th>
-    <td>Computer Science</td>
-    </tr>
-    <tr>
-    <th>Level: </th>
-    <td>Undergraduate</td>
-    </tr>
-    </table>
+    <div class='disclaimer'><fa-icon icon='exclamation-triangle' />  This page is only a mockup. There is no real interactivity available.  <fa-icon icon='exclamation-triangle' /></div>
+    <h4 style='text-align: left;'>You may register during the following times</h4>
+    <div class='info-table'>
+      <div class='header'>
+        <div>From</div>
+        <div>Begin Time</div>
+        <div>To</div>
+        <div>End Time</div>
+      </div>
+      <div class='table-body'>
+        <div class='row'>
+          <div>Jul 25, 2018</div>
+          <div>09:00 am</div>
+          <div>May 08, 2019</div>
+          <div>11:59 pm</div>
+        </div>
+      </div>
     </div>
+    <div class='info'><fa-icon icon='check-circle' /> You have no holds which prevent registration.</div>
+    <div class='info'><fa-icon icon='check-circle' /> Your Academic standing permits registration.</div>
+    <div class='info'><fa-icon icon='check-circle' /> Your Student Status permits registration.</div>
+    <div class='student-info'>
+      <div><b>Program:</b></div>
+      <div>Science-BSc Major</div>
+      <div><b>Faculty:</b></div>
+      <div>Faculty of Science</div>
+      <div><b>Major:</b></div>
+      <div>Computer Science</div>
+      <div><b>Level:</b></div>
+      <div>Undergraduate</div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -52,6 +46,55 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#registration-time-and-status {
+  div {
+    text-align: left;
+  }
+
+  .disclaimer {
+    text-align: center;
+  }
+
+  .info {
+    margin-top: 0.6em;
+  }
+
+  .student-info {
+    margin-top: 1.2em;
+    display: grid;
+    grid-template-columns: 10% 30%;
+    grid-template-rows: auto;
+    grid-column-gap: 15px;
+    grid-row-gap: 10px;
+
+    div:nth-child(2n + 1) {
+      text-align: right;
+    }
+  }
+}
+
+.info-table {
+  width: 50%;
+
+  .header div, .table-body .row div {
+    &:nth-child(1) {
+      grid-column: 1 / 4;
+    }
+
+    &:nth-child(2) {
+      grid-column: 4 / 7;
+    }
+
+    &:nth-child(3) {
+      grid-column: 7 / 10;
+    }
+
+    &:nth-child(4) {
+      grid-column: 10 / 13;
+    }
+  }
+}
+
 #courseinfo{
   float: left;
   margin-left: 60px;

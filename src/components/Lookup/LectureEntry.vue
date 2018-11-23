@@ -96,6 +96,7 @@
                     Laboratories
                 </div>
                 <div class='chevron'>
+                    <span class='text'>[click here to toggle]</span> 
                     <fa-icon :icon=" showLabs ? 'chevron-circle-down' : 'chevron-circle-left'" />
                 </div>
             </div>
@@ -422,6 +423,7 @@ export default {
             & > .header {
                 border-top: 1px solid $grey;
                 background-color: rgba($grey,0.3);
+                cursor: pointer;
                 margin-top: 0.6em;
                 margin-bottom: 0px;
                 padding: 10px;
@@ -429,7 +431,7 @@ export default {
                 font-weight: bold;
                 border-bottom: 1px solid $grey;
                 display: grid;
-                grid-template-columns: repeat(12, 1fr);
+                grid-template-columns: auto;
                 grid-template-rows: auto;
                 box-sizing: border-box;
                 border-left: 10px solid rgba($brown,0.4);
@@ -442,47 +444,34 @@ export default {
                     justify-self: start;
                 }
 
+                > .chevron, >.title {
+                    grid-row: 1 / -1;
+                }
+
                 > .chevron {
                     grid-column: -2 / -1;
                     align-self: center;
                     justify-self: end;
+
+                    .text {
+                        font-weight: normal;
+                        font-size: 80%;
+                        margin-right: 10px;
+                    }
                 }
             }
         }
 
         .info-table {
-            display: grid;
-            margin-top: 0.6em;
-            grid-template-columns: repeat(12,1fr);
-            grid-template-rows: auto;
-            font-size: 90%;
 
             .table-body {
-                grid-column: 1 / -1;
-                display: grid;
-                grid-template-columns: inherit;
-                grid-template-rows: auto;
-                border: 1px solid $dark-grey;
-                border-top: none;
-                box-sizing: border-box;
 
                 & > div {
-                    min-height: 60px;
-                    display: flex;
-                    flex-direction: column;
-                    height: 100%;
-                    width: 100%;
-                    align-items: center;
-                    justify-content: center;
-                    border-right: 1px solid $grey;
-                    
-                    &:last-child {
-                        border-right: 0;
-                    }
 
-                    // &.dates {
-                    //     font-size: 80%; 
-                    // }
+                }
+
+                .dates {
+                    font-size: 80%;
                 }
 
                 .location {
@@ -495,29 +484,6 @@ export default {
             }
 
             .header {
-                grid-column: 1 / -1;
-                display: grid;
-                grid-template-columns: inherit;
-                grid-template-rows: auto;
-                border-top-left-radius: 3px;
-                border-top-right-radius: 3px;
-                border: 1px solid $dark-grey;
-                margin-bottom: 0;
-                align-items: center;
-                justify-items: center;
-                font-weight: bold;
-                background-color: rgba($grey,0.15);
-                box-sizing: border-box;
-
-                div {
-                    width: 100%;
-                    height: 100%;
-                    min-height: 25px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    border-right: 1px solid $grey;
-                }
 
                 .campus {
                     grid-column: 1 / 2;

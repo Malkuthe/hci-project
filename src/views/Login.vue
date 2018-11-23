@@ -3,25 +3,30 @@
 
         <div id="form">
             
-            <div id="login-form">
-                <label for='username' class='username'>Username</label>
-                <input 
-                    v-model='username' 
-                    class='username' 
-                    placeholder='Username' />
-                <label for='password' class='password'>Password</label>
-                <input 
-                    v-model='password' 
-                    class='password' 
-                    :type='loginType' 
-                    placeholder='Password' />
-
-                <button @click='tryLogin'>Login</button>
-            </div>
+            <form id="login-form" @submit.prevent='tryLogin'>
+                <div class='field beside'>
+                    <label for='username' class='username'>Username:</label>
+                    <input 
+                        v-model='username' 
+                        class='text-input' 
+                        placeholder='Username' />
+                </div>
+                <div class='field beside'>
+                    <label for='password' class='password'>Password:</label>
+                    <input 
+                        v-model='password' 
+                        class='text-input' 
+                        :type='loginType' 
+                        placeholder='Password' />
+                </div>
+                <div class='buttons-container'>
+                    <button>Login</button>
+                </div>
+            </form>
 
             <div id="login-help">
                 <transition :duration="1000" name="unfold">
-                    <div v-if='errorLogin' class="alert error">Login failed. Incorrect username or password</div>
+                    <div v-if='errorLogin' class="alert error"><fa-icon icon='exclamation-triangle' /> Login failed. Incorrect username or password</div>
                 </transition>
             </div>
         </div>
@@ -106,76 +111,10 @@ export default {
             border-style: solid;
             border-image-slice: 1;
 
-            #login-form{
-                display: grid;
-                grid-template-columns: 80px auto 1fr;
-                grid-template-rows: repeat(auto-fill,35px);
-                grid-template-areas: 'label input extra';
-                grid-row-gap: 1.4em;
-
-                label {
-                    grid-area: label;
-                    font-size: 100%;
-                    display: flex;
-                    align-items: center;
-                    
-                    &.username {
-                        grid-row: 1 / 2;
-                    }
-
-                    &.password {
-                        grid-row: 2 / 3;
-                    }
-                }
-
-                input {
-                    grid-area: input;
-                    width: 250px;
-                    height: 30px;
-                    border-radius: 3px;
-                    appearance: none;
-                    border: none;
-                    padding-left: 4px;
-                    border: 2px solid $dark-blue-grey;
-                    transition: 0.5s;
-
-                    &.username {
-                        grid-row: 1 / 2;
-                    }
-
-                    &.password {
-                        grid-row: 2 / 3;
-                    }
-
-                    &:focus {
-                        outline: 0;
-                        border: 2px solid $brown;
-                    }
-                }
-
-                button {
-                    all: unset;
-                    grid-area: input;
-                    grid-row: 3 / 4;
-                    padding: 10px 20px;
-                    width: fit-content;
-                    margin-left: auto;
-                    background: $blue;
-                    border-radius: 3px;
-                    color: $pale-blue;
-                    font-size: 80%;
-                    transition: background-color 0.33s;
-                    box-shadow: 
-                        0 2px 2px 0 rgba(0,0,0,0.14), 
-                        0 3px 1px -2px rgba(0,0,0,0.12), 
-                        0 1px 5px 0 rgba(0,0,0,0.2);
-                    
-                    &:hover {
-                        background: $light-blue;
-                    }
-
-                    &:active {
-                        background: $dark-blue;
+            #login-form {
+                .field {
+                    input {
+                        grid-column: 2 / -1;
                     }
                 }
             }

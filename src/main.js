@@ -10,7 +10,8 @@ import {
   faChevronCircleLeft,
   faChevronCircleDown,
   faTimesCircle,
-  faCheckCircle } from '@fortawesome/free-solid-svg-icons'
+  faCheckCircle,
+  faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Multiselect from 'vue-multiselect'
 import Vuebar from 'vuebar'
@@ -22,7 +23,8 @@ library.add([
   faChevronCircleLeft,
   faChevronCircleDown,
   faTimesCircle,
-  faCheckCircle ])
+  faCheckCircle,
+  faArrowRight ])
 
 Vue.component('fa-icon', FontAwesomeIcon)
 Vue.component('v-select', Multiselect)

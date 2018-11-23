@@ -10,7 +10,7 @@
                 {{ dept.name }}
             </div>
             <div class='department-toggle-button'
-                 :id="'department-toggle-button--' + affix">
+                 :id="'department-toggle-button--' + affix"><span class='text'>[click here to toggle]</span> 
                 <fa-icon :icon="!show ? 'chevron-circle-left' : 'chevron-circle-down'" />
             </div>
         </div>
@@ -84,13 +84,19 @@ export default {
 
         .department-header{
             display: grid;
-            grid-template-columns: repeat(12, 1fr);
+            cursor: pointer;
+            grid-template-columns: auto;
             grid-template-rows: auto;
             border-top: 1px solid $grey;
             border-bottom: 1px solid $grey;
+            align-items: center;
 
             &:not(.active) {
                 border-bottom: 0;
+            }
+
+            .department-name, .department-toggle-button {
+                grid-row: 1 / -1;
             }
             
             .department-name {
@@ -103,6 +109,11 @@ export default {
                 grid-column: -2 / -1;
                 align-self: center;
                 justify-self: right;
+
+                .text {
+                    font-size: 80%;
+                    margin-right: 10px;
+                }
             }
         }
     }
